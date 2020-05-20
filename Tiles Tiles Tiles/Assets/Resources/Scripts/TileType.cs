@@ -4,6 +4,21 @@ using UnityEngine;
 
 public class TileType : Tile
 {
+    [SerializeField]
+    private float _latterHeight = 5;
+    [SerializeField]
+    private Vector3 _latterHeightVector;
+
+    [SerializeField]
+    private bool _isForwardDirection = false;
+    [SerializeField]
+    private bool _isBackwardDirection = false;
+    [SerializeField]
+    private bool _isRightDirection = false;
+    [SerializeField]
+    private bool _isLeftDirection = false;
+    [SerializeField]
+    private Vector3 _direction;
     //protected bool isLatter = false;
     //protected bool isCover = false;
     // Start is called before the first frame update
@@ -11,6 +26,25 @@ public class TileType : Tile
     {
         GridManager.EventScanTilesUpdate += ScanTiles;
         ScanTiles();
+
+        //if (_isForwardDirection)
+        //{
+        //    _direction = Vector3.forward;
+        //}
+        //else if (_isBackwardDirection)
+        //{
+        //    _direction = Vector3.back;
+        //}
+        //else if (_isBackwardDirection)
+        //{
+        //    _direction = Vector3.right;
+        //}
+        //else if (_isBackwardDirection)
+        //{
+        //    _direction = Vector3.left;
+        //}
+
+        //_latterHeightVector = new Vector3(0, _latterHeight, 0);
     }
 
     // Update is called once per frame
@@ -33,6 +67,7 @@ public class TileType : Tile
             if (isLatter)
             {
                 GetComponent<Renderer>().material.color = Color.yellow;
+                
             }
         }
         else
@@ -49,8 +84,22 @@ public class TileType : Tile
     //    TileModifier tileModifier = hit.collider.GetComponent<TileModifier>();
     //    if (tileModifier)
     //    {
-            
+
     //    }
 
+    //}
+
+    //public void DetectLatterTop()
+    //{
+    //    Collider[] colliders = Physics.OverlapBox(transform.position + _direction, _latterHeightVector);
+
+    //    foreach (var col in colliders)
+    //    {
+    //        Tile tile = col.GetComponent<Tile>();
+    //        if (tile)
+    //        {
+    //            listOfNearbyValidTiles.Add(tile);
+    //        }
+    //    }
     //}
 }

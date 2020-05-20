@@ -58,7 +58,7 @@ public class Tile : MonoBehaviour
         //bool isWalkable = false;
         isCover = false;
         isCurrent = false;//
-        isLatter = false;
+        //isLatter = false;
         isSelectable = false;//
         isTarget = false;//
 
@@ -88,6 +88,10 @@ public class Tile : MonoBehaviour
         GatherNearbyTiles(Vector3.left);
         GatherNearbyTiles(Vector3.right);
 
+        if (isLatter)
+        {
+            DetectLatterTop();
+        }
 
     }
 
@@ -108,6 +112,22 @@ public class Tile : MonoBehaviour
                 {
                     listOfNearbyValidTiles.Add(referenceTile);
                 }
+            }
+        }
+    }
+
+    public Vector3 latterSpotPosition;
+
+    public void DetectLatterTop()
+    {
+        Collider[] colliders = Physics.OverlapBox(transform.position + latterSpotPosition, Vector3.up);
+
+        foreach (var col in colliders)
+        {
+            Tile tile = col.GetComponent<Tile>();
+            if (tile)
+            {
+                listOfNearbyValidTiles.Add(tile);
             }
         }
     }
