@@ -25,31 +25,31 @@ public class Tile : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        GridManager.EventScanTilesUpdate += ScanTiles;
-        ScanTiles();
+        //GridManager.EventScanTilesUpdate += ScanTiles;
+        //ScanTiles();
     }
 
     // Update is called once per frame
     void Update()
     {
-        Debug.DrawRay(transform.position, Vector3.up);
+        //Debug.DrawRay(transform.position, Vector3.up);
 
-        if (isCurrent)
-        {
-            GetComponent<Renderer>().material.color = Color.red;
-        }
-        else if (isTarget)
-        {
-            GetComponent<Renderer>().material.color = Color.cyan;
-        }
-        else if (isSelectable)
-        {
-            GetComponent<Renderer>().material.color = Color.blue;
-        }
-        else
-        {
-            GetComponent<Renderer>().material.color = Color.white;
-        }
+        //if (isCurrent)
+        //{
+        //    GetComponent<Renderer>().material.color = Color.red;
+        //}
+        //else if (isTarget)
+        //{
+        //    GetComponent<Renderer>().material.color = Color.cyan;
+        //}
+        //else if (isSelectable)
+        //{
+        //    GetComponent<Renderer>().material.color = Color.blue;
+        //}
+        //else
+        //{
+        //    GetComponent<Renderer>().material.color = Color.white;
+        //}
 
     }
 

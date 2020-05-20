@@ -10,6 +10,8 @@ public class GridManager : MonoBehaviour
 
     public Tile tilePlaceholder;
 
+    
+
 
     CharacterBaseClass baseCharacter;
 
@@ -80,7 +82,7 @@ public class GridManager : MonoBehaviour
 
         while (queueProcess.Count > 0)
         {
-            Debug.Log("mooooooooooooooooooooooooooo");
+            //Debug.Log("mooooooooooooooooooooooooooo");
             Tile t = queueProcess.Dequeue();
 
             listOfSelectableTiles.Add(t);
@@ -119,7 +121,7 @@ public class GridManager : MonoBehaviour
             next = next.parent;
         }
 
-        Debug.Log("CalculatePathToDesignatedTile");
+        //Debug.Log("CalculatePathToDesignatedTile");
     }
 
     public void ClearSelectableTiles()
