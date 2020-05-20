@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Tile : MonoBehaviour
 {
-    public bool isWalkable = false;
+    public bool isWalkable = true;
     public bool isCurrent = false;
     public bool isCover = false;
     public bool isLatter = false;
@@ -13,7 +13,7 @@ public class Tile : MonoBehaviour
 
     public List<Tile> listOfNearbyValidTiles;
 
-    public int jumpHeight = 100;
+    public int jumpHeight = 2;
 
     private Tile referenceTile;
 
@@ -25,6 +25,7 @@ public class Tile : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        GridManager.EventScanTilesUpdate += ScanTiles;
         ScanTiles();
     }
 
@@ -55,28 +56,32 @@ public class Tile : MonoBehaviour
     public void ResetTileData()
     {
         //bool isWalkable = false;
-        bool isCurrent = false;
-        bool isCover = false;
-        bool isLatter = false;
-        bool isSelectable = false;
-        bool isTarget = false;
+        isCover = false;
+        isCurrent = false;//
+        isLatter = false;
+        isSelectable = false;//
+        isTarget = false;//
+
+        listOfNearbyValidTiles.Clear();//
 
         
 
-        int jumpHeight = 100;
+        referenceTile = default;//
 
-         referenceTile = default;
+        isVisited = false;//
 
-        bool isVisited = false;
+        distance = 0;//
 
-        int distance = 0;
+        parent = null;//
 
-        Tile parent = default;
+        
     }
 
     public void ScanTiles()
     {
         ResetTileData();
+
+        //Debug.Log("cucucucufhdgd");
 
         GatherNearbyTiles(Vector3.forward);
         GatherNearbyTiles(Vector3.back);
