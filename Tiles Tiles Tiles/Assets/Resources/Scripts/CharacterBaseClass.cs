@@ -28,6 +28,8 @@ public class CharacterBaseClass : MonoBehaviour
 
     public float moveSpeed = 2;
 
+    private bool _isCoverMode = false;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -90,6 +92,19 @@ public class CharacterBaseClass : MonoBehaviour
     private void SetRunningVelocity()
     {
         _velocity = _movementDirection * moveSpeed;
+    }
+
+    public void CoverMode(bool option)
+    {
+        gameObject.GetComponentInChildren<Animator>().SetBool("IsInCoverState", option);
+        //gameObject.GetComponent<Animator>().SetBool("IsInCoverState", CoverAnimFLipFlop());
+        Debug.Log(_isCoverMode);
+    }
+
+    private bool CoverAnimSwitch()
+    {
+        _isCoverMode = !_isCoverMode;
+        return _isCoverMode;
     }
 
 }

@@ -27,7 +27,7 @@ public class CharacterMove : CharacterBaseClass
         if (!isTilesFound)
         {
             GridManager.instance.CalculateAvailablePath(this.gameObject);            
-        }
+        }        
     }
 
     private void ActivateMouse()
@@ -49,4 +49,6 @@ public class CharacterMove : CharacterBaseClass
             }
         }
     }
+
+    
 }

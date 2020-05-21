@@ -56,7 +56,7 @@ public class Tile : MonoBehaviour
     public void ResetTileData()
     {
         //bool isWalkable = false;
-        isCover = false;
+        //isCover = false;
         isCurrent = false;//
         //isLatter = false;
         isSelectable = false;//
@@ -92,6 +92,11 @@ public class Tile : MonoBehaviour
         {
             DetectLatterTop();
         }
+
+        //if (isCover)
+        //{
+        //    SetCovertTiles();
+        //}
 
     }
 
@@ -129,6 +134,14 @@ public class Tile : MonoBehaviour
             {
                 listOfNearbyValidTiles.Add(tile);
             }
+        }
+    }
+
+    public void SetCovertTiles()
+    {
+        foreach (var tile in listOfNearbyValidTiles)
+        {
+            tile.isCover = true;
         }
     }
 }

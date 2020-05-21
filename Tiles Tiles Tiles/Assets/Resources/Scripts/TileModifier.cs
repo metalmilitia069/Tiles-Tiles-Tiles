@@ -11,8 +11,8 @@ public class TileModifier : MonoBehaviour
 
     [SerializeField]
     private float _latterHeight = 5;
-    [SerializeField]
-    private Vector3 _latterHeightVector;
+    //[SerializeField]
+    //private Vector3 _latterHeightVector;
 
     [SerializeField]
     private bool _isForwardDirection = false;
@@ -24,6 +24,10 @@ public class TileModifier : MonoBehaviour
     private bool _isLeftDirection = false;
     [SerializeField]
     private Vector3 _position;
+
+    [SerializeField]
+    private bool _isRayUp = false;
+    private Vector3 _rayDirection;
 
 
 
@@ -49,6 +53,15 @@ public class TileModifier : MonoBehaviour
         }
 
         _position = _position + new Vector3(0, _latterHeight, 0);
+
+        if (_isRayUp)
+        {
+            _rayDirection = Vector3.up;
+        }
+        else
+        {
+            _rayDirection = Vector3.down;
+        }
     }
 
     // Update is called once per frame
@@ -63,13 +76,13 @@ public class TileModifier : MonoBehaviour
     private void ChangeTileType()
     {
         RaycastHit hit;
-        if(Physics.Raycast(transform.position, Vector3.up, out hit, 1))
+        if(Physics.Raycast(transform.position, _rayDirection, out hit, 1))
         {
             Tile tile = hit.collider.GetComponent<Tile>();
             if (tile)
             {
                 isTypeChanged = true;
-                Debug.Log("shkjlhkjldshkjldskjhlsda  hdhjshkjlhsad");
+                //Debug.Log("shkjlhkjldshkjldskjhlsda  hdhjshkjlhsad");
                 if (isLatter)
                 {
                     tile.isLatter = true;
@@ -77,7 +90,7 @@ public class TileModifier : MonoBehaviour
                 }
                 if (isCover)
                 {
-                    tile.isCover = true;
+                    tile.SetCovertTiles();
                 }
             }
         }

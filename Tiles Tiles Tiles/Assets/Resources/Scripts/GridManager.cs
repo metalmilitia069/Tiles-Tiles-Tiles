@@ -64,15 +64,30 @@ public class GridManager : MonoBehaviour
             tilePlaceholder = hit.collider.transform.GetComponent<Tile>();
 
             tilePlaceholder.isCurrent = true;
+
+            if (tilePlaceholder.isCover) //&& tilePlaceholder.isCurrent)
+            {
+                baseCharacter.CoverMode(true);
+            }
+            else
+            {
+                baseCharacter.CoverMode(false);
+            }
+
+
+
         }
     }
 
     public void CalculateAvailablePath(GameObject character)
     {
+        baseCharacter = character.GetComponent<CharacterBaseClass>();
+        
         EventScanTilesUpdate();
         GetCurrentTile(character);
 
-        baseCharacter = character.GetComponent<CharacterBaseClass>();
+
+
 
         //BFS Algorithm
         var queueProcess = new Queue<Tile>();

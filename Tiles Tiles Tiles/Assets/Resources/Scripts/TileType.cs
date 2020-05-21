@@ -25,26 +25,7 @@ public class TileType : Tile
     void Start()
     {
         GridManager.EventScanTilesUpdate += ScanTiles;
-        ScanTiles();
-
-        //if (_isForwardDirection)
-        //{
-        //    _direction = Vector3.forward;
-        //}
-        //else if (_isBackwardDirection)
-        //{
-        //    _direction = Vector3.back;
-        //}
-        //else if (_isBackwardDirection)
-        //{
-        //    _direction = Vector3.right;
-        //}
-        //else if (_isBackwardDirection)
-        //{
-        //    _direction = Vector3.left;
-        //}
-
-        //_latterHeightVector = new Vector3(0, _latterHeight, 0);
+        ScanTiles();        
     }
 
     // Update is called once per frame
@@ -66,40 +47,16 @@ public class TileType : Tile
 
             if (isLatter)
             {
-                GetComponent<Renderer>().material.color = Color.yellow;
-                
+                GetComponent<Renderer>().material.color = Color.yellow;                
+            }
+            else if (isCover)
+            {
+                GetComponent<Renderer>().material.color = Color.green;
             }
         }
         else
         {
             GetComponent<Renderer>().material.color = Color.white;
         }
-    }
-
-    //private void ChangeTileType()
-    //{
-    //    RaycastHit hit;
-    //    Physics.Raycast(transform.position, Vector3.down, out hit, 1);
-
-    //    TileModifier tileModifier = hit.collider.GetComponent<TileModifier>();
-    //    if (tileModifier)
-    //    {
-
-    //    }
-
-    //}
-
-    //public void DetectLatterTop()
-    //{
-    //    Collider[] colliders = Physics.OverlapBox(transform.position + _direction, _latterHeightVector);
-
-    //    foreach (var col in colliders)
-    //    {
-    //        Tile tile = col.GetComponent<Tile>();
-    //        if (tile)
-    //        {
-    //            listOfNearbyValidTiles.Add(tile);
-    //        }
-    //    }
-    //}
+    }    
 }
