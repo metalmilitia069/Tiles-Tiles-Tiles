@@ -1682,6 +1682,11 @@ MonoBehaviour:
   isMoving: 0
   isTilesFound: 0
   moveSpeed: 2
+  fallingDown: 0
+  jumpingUp: 0
+  movingEdge: 0
+  jumpTarget: {x: 0, y: 0, z: 0}
+  jumpVelocity: 4.5
 --- !u!136 &1224280841
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -1732,6 +1737,11 @@ MonoBehaviour:
   isMoving: 0
   isTilesFound: 0
   moveSpeed: 2
+  fallingDown: 0
+  jumpingUp: 0
+  movingEdge: 0
+  jumpTarget: {x: 0, y: 0, z: 0}
+  jumpVelocity: 4.5
 --- !u!136 &1238659821
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -2161,6 +2171,11 @@ MonoBehaviour:
   isMoving: 0
   isTilesFound: 0
   moveSpeed: 2
+  fallingDown: 0
+  jumpingUp: 0
+  movingEdge: 0
+  jumpTarget: {x: 0, y: 0, z: 0}
+  jumpVelocity: 4.5
 --- !u!136 &1795219858
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -2498,11 +2513,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 6147820253517151296, guid: 946fad385fcaa65468c81329c5d29768,
-        type: 3}
-      propertyPath: _latterHeightVector.y
-      value: 5
-      objectReference: {fileID: 0}
     - target: {fileID: 6249545593122407974, guid: 946fad385fcaa65468c81329c5d29768,
         type: 3}
       propertyPath: m_LocalPosition.x

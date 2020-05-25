@@ -106,3 +106,22 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 00b2fae489f720d4b8bbf051a73d1bad, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  isWalkable: 1
+  isCurrent: 0
+  isCover: 0
+  isLatter: 0
+  isSelectable: 0
+  isTarget: 0
+  listOfNearbyValidTiles: []
+  jumpHeight: 2
+  isVisited: 0
+  distance: 0
+  parent: {fileID: 0}
+  latterSpotPosition: {x: 0, y: 0, z: 0}
+  _latterHeight: 5
+  _latterHeightVector: {x: 0, y: 5, z: 0}
+  _isForwardDirection: 0
+  _isBackwardDirection: 0
+  _isRightDirection: 0
+  _isLeftDirection: 0
+  _direction: {x: 0, y: 0, z: 0}

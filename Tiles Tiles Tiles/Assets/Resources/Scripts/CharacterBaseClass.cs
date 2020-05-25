@@ -30,6 +30,14 @@ public class CharacterBaseClass : MonoBehaviour
 
     private bool _isCoverMode = false;
 
+
+    //Jump Variables
+    public bool fallingDown = false;
+    public bool jumpingUp = false;
+    public bool movingEdge = false;
+    public Vector3 jumpTarget;
+    public float jumpVelocity = 4.5f;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -54,10 +62,10 @@ public class CharacterBaseClass : MonoBehaviour
             if (Vector3.Distance(transform.position, destinationCoordinates) > 0.05f)
             {
                 bool jump = (transform.position.y != destinationCoordinates.y);
-                jump = false; //DELETE TO IMPLEMENT JUMP LATER
+                //jump = false; //DELETE TO IMPLEMENT JUMP LATER
                 if (jump)
                 {
-                    //TODO
+                    Jump(destinationCoordinates);
                 }
                 else
                 {
@@ -96,9 +104,7 @@ public class CharacterBaseClass : MonoBehaviour
 
     public void CoverMode(bool option)
     {
-        gameObject.GetComponentInChildren<Animator>().SetBool("IsInCoverState", option);
-        //gameObject.GetComponent<Animator>().SetBool("IsInCoverState", CoverAnimFLipFlop());
-        //Debug.Log(_isCoverMode);
+        gameObject.GetComponentInChildren<Animator>().SetBool("IsInCoverState", option);        
     }
 
     //private bool CoverAnimSwitch()
@@ -106,5 +112,100 @@ public class CharacterBaseClass : MonoBehaviour
     //    _isCoverMode = !_isCoverMode;
     //    return _isCoverMode;
     //}
+
+    public void Jump(Vector3 target)
+    {
+        if (fallingDown)
+        {
+            FallDownward(target);
+        }
+        else if (jumpingUp)
+        {
+            JumpUpward(target);
+        }
+        else if (movingEdge)
+        {
+            MoveToEdge();
+        }
+        else
+        {
+            PrepareJump(target);
+        }
+    }
+
+    public void PrepareJump(Vector3 target)
+    {
+        float targetY = target.y;
+        target.y = transform.position.y;
+
+        SetMovementDirection(target);
+
+        if (transform.position.y > targetY)
+        {
+            fallingDown = false;
+            jumpingUp = false;
+            movingEdge = true;
+
+            jumpTarget = transform.position + ((target - transform.position));/// 2.0f);
+        }
+        else
+        {
+            fallingDown = false;
+            jumpingUp = true;
+            movingEdge = false;
+
+            _velocity = _movementDirection * (moveSpeed / 3.0f);
+
+            float difference = targetY = transform.position.y;
+
+            _velocity.y = jumpVelocity * (0.5f + (difference / 2));
+        }
+    }
+
+    public void FallDownward(Vector3 target)
+    {
+        _velocity += Physics.gravity * Time.deltaTime;
+
+        if (transform.position.y <= target.y)
+        {
+            fallingDown = false;
+            jumpingUp = false;
+            movingEdge = false;
+
+            Vector3 p = transform.position;
+
+            p.y = target.y;
+            transform.position = p;
+
+            _velocity = new Vector3();
+        }
+    }
+
+    public void JumpUpward(Vector3 target)
+    {
+        _velocity += Physics.gravity * Time.deltaTime;
+
+        if (transform.position.y > target.y)
+        {
+            jumpingUp = false;
+            fallingDown = true;
+        }
+    }
+
+    public void MoveToEdge()
+    {
+        if (Vector3.Distance(transform.position, jumpTarget) >= 0.05f)
+        {
+            SetRunningVelocity();
+        }
+        else
+        {
+            movingEdge = false;
+            fallingDown = true;
+
+            _velocity /= 5.0f;
+            _velocity.y = 1.5f;
+        }
+    }
 
 }
