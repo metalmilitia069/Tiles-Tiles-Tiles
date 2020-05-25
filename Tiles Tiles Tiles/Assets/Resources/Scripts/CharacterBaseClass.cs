@@ -98,13 +98,13 @@ public class CharacterBaseClass : MonoBehaviour
     {
         gameObject.GetComponentInChildren<Animator>().SetBool("IsInCoverState", option);
         //gameObject.GetComponent<Animator>().SetBool("IsInCoverState", CoverAnimFLipFlop());
-        Debug.Log(_isCoverMode);
+        //Debug.Log(_isCoverMode);
     }
 
-    private bool CoverAnimSwitch()
-    {
-        _isCoverMode = !_isCoverMode;
-        return _isCoverMode;
-    }
+    //private bool CoverAnimSwitch()
+    //{
+    //    _isCoverMode = !_isCoverMode;
+    //    return _isCoverMode;
+    //}
 
 }

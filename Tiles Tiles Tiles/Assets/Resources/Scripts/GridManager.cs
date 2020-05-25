@@ -73,9 +73,6 @@ public class GridManager : MonoBehaviour
             {
                 baseCharacter.CoverMode(false);
             }
-
-
-
         }
     }
 
@@ -85,10 +82,7 @@ public class GridManager : MonoBehaviour
         
         EventScanTilesUpdate();
         GetCurrentTile(character);
-
-
-
-
+        
         //BFS Algorithm
         var queueProcess = new Queue<Tile>();
 
