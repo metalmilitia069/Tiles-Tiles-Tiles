@@ -22,6 +22,9 @@ public class Tile : MonoBehaviour
 
     public Tile parent = default;
 
+    //COmbat Stuff
+    public bool isAttackble = false;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -73,6 +76,11 @@ public class Tile : MonoBehaviour
         distance = 0;//
 
         parent = null;//
+
+
+        //COMBAT STUFF
+
+        isAttackble = false;
 
         
     }

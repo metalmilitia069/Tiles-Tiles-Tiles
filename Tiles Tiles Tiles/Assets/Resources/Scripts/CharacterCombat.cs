@@ -2,8 +2,25 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+[System.Serializable]
+public enum WeaponClass
+{
+    Melee,
+    Gun,
+    Rifle,
+    MiniGun,
+}
 public class CharacterCombat : CharacterMove
 {
+    [SerializeField]
+    private bool _isCombatMode = false;
+    [SerializeField]
+    private bool _isMoveMode = true;
+    [SerializeField]
+    private WeaponClass weaponClass;
+    [SerializeField]
+    private int _weaponRange;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -13,18 +30,36 @@ public class CharacterCombat : CharacterMove
     // Update is called once per frame
     void Update()
     {
-        if (!isMoving)
+        if (_isMoveMode)
         {
-            ActivateMouse();
+            _isCombatMode = false;
+
+            if (!isMoving)
+            {
+                ActivateMouse();
+            }
+            else
+            {
+                Move();
+            }
+
+            if (!isTilesFound)
+            {
+                GridManager.instance.CalculateAvailablePath(this.gameObject);
+            }           
         }
-        else
+        
+        if (_isCombatMode)
         {
-            Move();
+            _isMoveMode = false;
         }
 
-        if (!isTilesFound)
-        {
-            GridManager.instance.CalculateAvailablePath(this.gameObject);
-        }
+
+        
+
+
+
     }
+
+
 }

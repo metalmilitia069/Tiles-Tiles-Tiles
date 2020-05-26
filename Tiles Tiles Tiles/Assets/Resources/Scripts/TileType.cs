@@ -53,6 +53,11 @@ public class TileType : Tile
             {
                 GetComponent<Renderer>().material.color = Color.green;
             }
+
+            if (isAttackble)
+            {
+                GetComponent<Renderer>().material.color = Color.cyan;
+            }
         }
         else
         {
