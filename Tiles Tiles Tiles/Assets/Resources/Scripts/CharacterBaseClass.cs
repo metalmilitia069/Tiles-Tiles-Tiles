@@ -66,11 +66,12 @@ public class CharacterBaseClass : MonoBehaviour
                 if (jump)
                 {
                     Jump(destinationCoordinates);
+                    Debug.Log("cuca beludo");
                 }
                 else
                 {
                     SetMovementDirection(destinationCoordinates);
-                    SetRunningVelocity();
+                    SetRunningVelocity();                    
                 }
                 transform.forward = _movementDirection;
                 transform.position += _velocity * Time.deltaTime;
@@ -146,7 +147,7 @@ public class CharacterBaseClass : MonoBehaviour
             jumpingUp = false;
             movingEdge = true;
 
-            jumpTarget = transform.position + ((target - transform.position));/// 2.0f);
+            jumpTarget = transform.position + ((target - transform.position) / 2.0f);
         }
         else
         {
@@ -154,9 +155,9 @@ public class CharacterBaseClass : MonoBehaviour
             jumpingUp = true;
             movingEdge = false;
 
-            _velocity = _movementDirection * (moveSpeed / 3.0f);
-
-            float difference = targetY = transform.position.y;
+            _velocity =  _movementDirection * (moveSpeed / 3.0f); //THis Is the Horizontal Speed Component of The Jumping Process
+            //_velocity = Vector3.zero; // zero horizontal speed to climb latter
+            float difference = targetY - transform.position.y;
 
             _velocity.y = jumpVelocity * (0.5f + (difference / 2));
         }
