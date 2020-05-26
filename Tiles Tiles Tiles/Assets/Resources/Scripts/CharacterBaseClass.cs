@@ -23,6 +23,7 @@ public class CharacterBaseClass : MonoBehaviour
 
     [SerializeField]
     private Stack<Tile> _stackTilePath = new Stack<Tile>();
+    [SerializeField]
     private Vector3 _velocity = new Vector3();
     private Vector3 _movementDirection = new Vector3();
 
@@ -34,7 +35,7 @@ public class CharacterBaseClass : MonoBehaviour
     //Jump Variables
     public bool fallingDown = false;
     public bool jumpingUp = false;
-    public bool movingEdge = false;
+    public bool movingEdge = false;    
     public Vector3 jumpTarget;
     public float jumpVelocity = 4.5f;
 
@@ -146,8 +147,9 @@ public class CharacterBaseClass : MonoBehaviour
             fallingDown = false;
             jumpingUp = false;
             movingEdge = true;
-
+            
             jumpTarget = transform.position + ((target - transform.position) / 2.0f);
+            //jumpTarget = GridManager.instance.stackTilePath.Peek().transform.position;
         }
         else
         {
@@ -199,14 +201,18 @@ public class CharacterBaseClass : MonoBehaviour
         {
             SetRunningVelocity();
         }
-        else
+        while (Vector3.Distance(transform.position, jumpTarget) <= 0.05f)
         {
+            SetRunningVelocity();
+        }
+        //else
+        //{
             movingEdge = false;
             fallingDown = true;
 
-            _velocity /= 5.0f;
-            _velocity.y = 1.5f;
-        }
+            //_velocity /= 5.0f;
+           // _velocity.y = 1.5f;
+        //}
     }
 
 }
