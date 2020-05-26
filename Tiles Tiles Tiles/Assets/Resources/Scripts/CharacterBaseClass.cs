@@ -60,14 +60,13 @@ public class CharacterBaseClass : MonoBehaviour
 
             destinationCoordinates.y += halfHeight + t.GetComponent<Collider>().bounds.extents.y;
 
-            if (Vector3.Distance(transform.position, destinationCoordinates) > 0.05f)
+            if (Vector3.Distance(transform.position, destinationCoordinates) >= 0.05f)
             {
                 bool jump = (transform.position.y != destinationCoordinates.y);
-                //jump = false; //DELETE TO IMPLEMENT JUMP LATER
+                
                 if (jump)
                 {
-                    Jump(destinationCoordinates);
-                    Debug.Log("cuca beludo");
+                    Jump(destinationCoordinates);                    
                 }
                 else
                 {
@@ -148,8 +147,7 @@ public class CharacterBaseClass : MonoBehaviour
             jumpingUp = false;
             movingEdge = true;
             
-            jumpTarget = transform.position + ((target - transform.position) / 2.0f);
-            //jumpTarget = GridManager.instance.stackTilePath.Peek().transform.position;
+            jumpTarget = transform.position + ((target - transform.position) / 2.0f);            
         }
         else
         {
@@ -162,6 +160,8 @@ public class CharacterBaseClass : MonoBehaviour
             float difference = targetY - transform.position.y;
 
             _velocity.y = jumpVelocity * (0.5f + (difference / 2));
+
+            
         }
     }
 
@@ -196,23 +196,19 @@ public class CharacterBaseClass : MonoBehaviour
     }
 
     public void MoveToEdge()
-    {
-        if (Vector3.Distance(transform.position, jumpTarget) >= 0.05f)
-        {
-            SetRunningVelocity();
-        }
-        while (Vector3.Distance(transform.position, jumpTarget) <= 0.05f)
-        {
-            SetRunningVelocity();
-        }
-        //else
-        //{
-            movingEdge = false;
-            fallingDown = true;
+    {        
+        SetRunningVelocity();
+        
+        RaycastHit hit;        
+        
+        if (!Physics.Raycast(transform.position, Vector3.down, out hit, 1))
+        {            
+             movingEdge = false;
+             fallingDown = true;
 
-            //_velocity /= 5.0f;
-           // _velocity.y = 1.5f;
-        //}
+             _velocity /= 5.0f;
+             _velocity.y = 1.5f;
+        }        
     }
 
 }
