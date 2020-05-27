@@ -12,14 +12,14 @@ public enum WeaponClass
 }
 public class CharacterCombat : CharacterMove
 {
-    [SerializeField]
-    public bool _isCombatMode = false;
-    [SerializeField]
-    public bool _isMoveMode = true;
+    //[SerializeField]
+    //public bool _isCombatMode = false;
+    //[SerializeField]
+    //public bool _isMoveMode = true;
     [SerializeField]
     private WeaponClass _weaponClass;// = WeaponClass.Gun;
-    [SerializeField]
-    private int _weaponRange;
+    //[SerializeField]
+    //private int _weaponRange;
 
     // Start is called before the first frame update
     void Start()
@@ -60,10 +60,10 @@ public class CharacterCombat : CharacterMove
                     _weaponRange = 5;
                     break;
                 case WeaponClass.Rifle:
-                    _weaponRange = 5;
+                    _weaponRange = 7;
                     break;
                 case WeaponClass.MiniGun:
-                    _weaponRange = 5;
+                    _weaponRange = 4;
                     break;
                 default:
                     Debug.Log("No Weapon Selected");
@@ -71,7 +71,12 @@ public class CharacterCombat : CharacterMove
 
             }
 
-            
+            if (!isAttackRangeFound)
+            {
+                GridManager.instance.CalculateAttackPath(this.gameObject);
+            }
+
+
         }
 
 
@@ -92,6 +97,7 @@ public class CharacterCombat : CharacterMove
         {
             _isCombatMode = true;
             _isMoveMode = false;
+            isAttackRangeFound = false;
             
         }
         else if (_isCombatMode)

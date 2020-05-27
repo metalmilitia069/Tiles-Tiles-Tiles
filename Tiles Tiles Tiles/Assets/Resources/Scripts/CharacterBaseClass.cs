@@ -39,6 +39,16 @@ public class CharacterBaseClass : MonoBehaviour
     public Vector3 jumpTarget;
     public float jumpVelocity = 4.5f;
 
+
+    //Combat Mode
+    [SerializeField]
+    public int _weaponRange;
+    public bool isAttackRangeFound = false;
+    [SerializeField]
+    public bool _isCombatMode = false;
+    [SerializeField]
+    public bool _isMoveMode = true;
+
     // Start is called before the first frame update
     void Start()
     {

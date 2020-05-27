@@ -70,6 +70,10 @@ public class GridManager : MonoBehaviour
 
             tilePlaceholder.isCurrent = true;
 
+
+            tilePlaceholder.isMoveMode = baseCharacter._isMoveMode; //To CHange Move or Attack Tile Neighbours
+
+
             if (tilePlaceholder.isCover) //&& tilePlaceholder.isCurrent)
             {
                 baseCharacter.CoverMode(true);
@@ -85,8 +89,12 @@ public class GridManager : MonoBehaviour
     {
         baseCharacter = character.GetComponent<CharacterBaseClass>();
         
+
+
         EventScanTilesUpdate();
         GetCurrentTile(character);
+
+        
         
         //BFS Algorithm
         var queueProcess = new Queue<Tile>();
@@ -173,9 +181,9 @@ public class GridManager : MonoBehaviour
             Tile t = queueProcess.Dequeue();
 
             listOfSelectableTiles.Add(t);
-            t.isSelectable = true;
+            t.isAttacable = true;
 
-            if (t.distance < baseCharacter._movePoints)
+            if (t.distance < baseCharacter._weaponRange)
             {
                 foreach (var tile in t.listOfNearbyValidTiles)
                 {
@@ -190,7 +198,7 @@ public class GridManager : MonoBehaviour
             }
         }
         baseCharacter.currentTile = tilePlaceholder;
-        baseCharacter.isTilesFound = true;
+        baseCharacter.isAttackRangeFound = true;
     }
 
 }

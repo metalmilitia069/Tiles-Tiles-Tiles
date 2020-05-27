@@ -333,6 +333,10 @@ MonoBehaviour:
   movingEdge: 0
   jumpTarget: {x: 0, y: 0, z: 0}
   jumpVelocity: 4.5
+  _weaponRange: 0
+  isAttackRangeFound: 0
+  _isCombatMode: 0
+  _isMoveMode: 1
 --- !u!136 &104684099
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -1743,10 +1747,11 @@ MonoBehaviour:
   movingEdge: 0
   jumpTarget: {x: 0, y: 0, z: 0}
   jumpVelocity: 4.5
+  _weaponRange: 0
+  isAttackRangeFound: 0
   _isCombatMode: 0
   _isMoveMode: 1
-  _weaponClass: 1
-  _weaponRange: 0
+  _weaponClass: 3
 --- !u!136 &1224280841
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -1857,6 +1862,10 @@ MonoBehaviour:
   movingEdge: 0
   jumpTarget: {x: 0, y: 0, z: 0}
   jumpVelocity: 4.5
+  _weaponRange: 0
+  isAttackRangeFound: 0
+  _isCombatMode: 0
+  _isMoveMode: 1
 --- !u!136 &1294687313
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -2698,6 +2707,10 @@ MonoBehaviour:
   movingEdge: 0
   jumpTarget: {x: 0, y: 0, z: 0}
   jumpVelocity: 4.5
+  _weaponRange: 0
+  isAttackRangeFound: 0
+  _isCombatMode: 0
+  _isMoveMode: 1
 --- !u!136 &2052390584
 CapsuleCollider:
   m_ObjectHideFlags: 0

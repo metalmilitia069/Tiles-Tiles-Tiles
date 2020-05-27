@@ -23,7 +23,9 @@ public class Tile : MonoBehaviour
     public Tile parent = default;
 
     //COmbat Stuff
-    public bool isAttackble = false;
+    public bool isAttacable = false;
+    protected bool isAttackMode = false;
+    public bool isMoveMode = true;
 
     // Start is called before the first frame update
     void Start()
@@ -80,7 +82,7 @@ public class Tile : MonoBehaviour
 
         //COMBAT STUFF
 
-        isAttackble = false;
+        isAttacable = false;
 
         
     }
@@ -129,7 +131,12 @@ public class Tile : MonoBehaviour
                 {
                     if (hit.transform.GetComponent<EnemyBaseClass>())
                     {
+                        //if(!referenceTile.isMoveMode)
+                        //{
+                        Debug.Log("xibiru");
                         listOfNearbyValidTiles.Add(referenceTile);
+                        //}
+
                     }
                 }
 
