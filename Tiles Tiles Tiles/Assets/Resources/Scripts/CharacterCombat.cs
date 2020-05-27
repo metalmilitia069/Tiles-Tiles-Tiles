@@ -86,7 +86,10 @@ public class CharacterCombat : CharacterMove
             ChangeMode();            
         }
 
-
+        if (Input.GetKeyDown(KeyCode.F))
+        {
+            ChangeWeapon();
+        }
 
 
     }
@@ -118,7 +121,26 @@ public class CharacterCombat : CharacterMove
         GridManager.instance.ClearSelectableTiles();
     }
 
-    //public void 
+    int index = 0;
+
+    public void ChangeWeapon()
+    {
+        int[] weaponArray = { (int)WeaponClass.Melee, (int)WeaponClass.Gun, (int)WeaponClass.Rifle, (int)WeaponClass.MiniGun };
+        
+
+        if (index < weaponArray.Length-1)
+        {
+            index++;
+        }
+        else
+        {
+            index = 0;
+        }
+
+        _weaponClass = (WeaponClass)index;
+        isAttackRangeFound = false;
+
+    }
 
 
 }

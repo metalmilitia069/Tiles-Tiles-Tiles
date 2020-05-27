@@ -15,4 +15,9 @@ public class EnemyBaseClass : MonoBehaviour
     {
         
     }
+
+    private void OnMouseOver()
+    {
+        Debug.Log("mozo");
+    }
 }
