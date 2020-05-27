@@ -29,7 +29,7 @@ public class CharacterMove : CharacterBaseClass
         //}        
     }
 
-    protected void ActivateMouse()
+    protected void ActivateMouseToMovement()
     {
         if (Input.GetMouseButtonUp(0))
         {

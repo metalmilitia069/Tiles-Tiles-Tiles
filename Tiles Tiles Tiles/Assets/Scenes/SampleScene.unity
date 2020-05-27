@@ -303,7 +303,7 @@ GameObject:
   - component: {fileID: 104684098}
   - component: {fileID: 104684101}
   m_Layer: 0
-  m_Name: Enemy
+  m_Name: Storm Trooper 01
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1103,6 +1103,7 @@ MonoBehaviour:
   listOfSelectableTiles: []
   listOfAllTilesInLevel: []
   tilePlaceholder: {fileID: 0}
+  baseCharacter: {fileID: 0}
   _isCombatMode: 0
 --- !u!4 &621362130
 Transform:
@@ -1702,7 +1703,7 @@ GameObject:
   - component: {fileID: 1224280841}
   - component: {fileID: 1224280840}
   m_Layer: 0
-  m_Name: Player
+  m_Name: Han Solo
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1752,6 +1753,7 @@ MonoBehaviour:
   _isCombatMode: 0
   _isMoveMode: 1
   _weaponClass: 3
+  _listOfScannedEnemies: []
 --- !u!136 &1224280841
 CapsuleCollider:
   m_ObjectHideFlags: 0

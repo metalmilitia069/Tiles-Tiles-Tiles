@@ -40,7 +40,7 @@ public class CharacterCombat : CharacterMove
 
             if (!isMoving)
             {
-                ActivateMouse();
+                ActivateMouseToMovement();
             }
             else
             {
@@ -58,7 +58,7 @@ public class CharacterCombat : CharacterMove
             switch (_weaponClass)
             {
                 case WeaponClass.Melee:
-                    _weaponRange = 2;
+                    _weaponRange = 1;
                     break;
                 case WeaponClass.Gun:
                     _weaponRange = 5;
@@ -81,6 +81,7 @@ public class CharacterCombat : CharacterMove
                 ScanForEnemies();
             }
 
+            ActivateMouseToAttack();
 
         }
 
@@ -164,6 +165,37 @@ public class CharacterCombat : CharacterMove
                 }
             }
         }
+    }
+
+    public void ActivateMouseToAttack()
+    {
+        if(Input.GetMouseButtonDown(0))
+        {
+            Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+            RaycastHit hit;
+
+            if (Physics.Raycast(ray, out hit))
+            {
+                EnemyBaseClass enemyPlaceHolder = hit.collider.GetComponent<EnemyBaseClass>();
+                if (enemyPlaceHolder)
+                {
+                    foreach (var enemy in _listOfScannedEnemies)
+                    {
+                        if (enemy == enemyPlaceHolder)
+                        {
+                            Attack(enemy);
+                        }
+                    }
+                }
+            }
+
+
+        }
+    }
+
+    public void Attack(EnemyBaseClass enemy)
+    {
+        Debug.Log("The Enemy " + enemy.name + " is Being Attacked By " + this.gameObject.name + " Using " + _weaponClass);
     }
 
 
