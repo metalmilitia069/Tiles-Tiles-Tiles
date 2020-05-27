@@ -25,7 +25,8 @@ public class TileType : Tile
     void Start()
     {
         GridManager.EventScanTilesUpdate += ScanTiles;
-        ScanTiles();        
+        ScanTiles();
+        GridManager.instance.listOfAllTilesInLevel.Add(this);
     }
 
     // Update is called once per frame

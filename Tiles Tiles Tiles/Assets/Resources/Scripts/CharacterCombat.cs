@@ -98,6 +98,10 @@ public class CharacterCombat : CharacterMove
             _isCombatMode = true;
             _isMoveMode = false;
             isAttackRangeFound = false;
+            foreach (var item in GridManager.instance.listOfAllTilesInLevel)
+            {
+                item.isMoveMode = false;
+            }
             
         }
         else if (_isCombatMode)
@@ -105,6 +109,10 @@ public class CharacterCombat : CharacterMove
             _isCombatMode = false;
             _isMoveMode = true;            
             isTilesFound = false;
+            foreach (var item in GridManager.instance.listOfAllTilesInLevel)
+            {
+                item.isMoveMode = true;
+            }
         }
 
         GridManager.instance.ClearSelectableTiles();

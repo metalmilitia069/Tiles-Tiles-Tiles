@@ -13,7 +13,7 @@ public class GridManager : MonoBehaviour
     
 
 
-    CharacterBaseClass baseCharacter;
+    public CharacterBaseClass baseCharacter;
 
     [SerializeField]
     public Stack<Tile> stackTilePath = new Stack<Tile>();

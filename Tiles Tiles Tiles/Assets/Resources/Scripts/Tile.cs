@@ -32,6 +32,7 @@ public class Tile : MonoBehaviour
     {
         //GridManager.EventScanTilesUpdate += ScanTiles;
         //ScanTiles();
+        //GridManager.instance.listOfAllTilesInLevel.Add(this);
     }
 
     // Update is called once per frame
@@ -129,12 +130,52 @@ public class Tile : MonoBehaviour
                 }
                 else
                 {
+                    //if(GridManager.instance.baseCharacter._isCombatMode)
+                    if(!this.isMoveMode)
+                    {
+                        if (hit.transform.GetComponent<EnemyBaseClass>())
+                        {
+                            //referenceTile.isMoveMode = false;
+                            //if (!referenceTile.isMoveMode)
+                            //{
+                            //    Debug.Log("xibiru");
+                                listOfNearbyValidTiles.Add(referenceTile);
+                            //}
+
+                        }
+                    }
+                }
+
+            }
+        }
+    }
+
+    public void GatherNearbyTilesAttackMode(Vector3 direction)
+    {
+        Vector3 halfExtends = new Vector3(0.25f, jumpHeight, 0.25f);
+        Collider[] colliders = Physics.OverlapBox(transform.position + direction, halfExtends);
+
+        foreach (var col in colliders)
+        {
+            referenceTile = col.GetComponent<Tile>();
+
+            if (referenceTile != null && referenceTile.isWalkable)
+            {
+                RaycastHit hit;
+
+                if (!Physics.Raycast(referenceTile.transform.position, Vector3.up, out hit, 1))
+                {
+                    listOfNearbyValidTiles.Add(referenceTile);
+                }
+                else
+                {
                     if (hit.transform.GetComponent<EnemyBaseClass>())
                     {
-                        //if(!referenceTile.isMoveMode)
+                        //referenceTile.isMoveMode = false;
+                        //if (!referenceTile.isMoveMode)
                         //{
-                        Debug.Log("xibiru");
-                        listOfNearbyValidTiles.Add(referenceTile);
+                            //Debug.Log("xibiru");
+                            listOfNearbyValidTiles.Add(referenceTile);
                         //}
 
                     }
