@@ -13,11 +13,11 @@ public enum WeaponClass
 public class CharacterCombat : CharacterMove
 {
     [SerializeField]
-    private bool _isCombatMode = false;
+    public bool _isCombatMode = false;
     [SerializeField]
-    private bool _isMoveMode = true;
+    public bool _isMoveMode = true;
     [SerializeField]
-    private WeaponClass weaponClass;
+    private WeaponClass _weaponClass;// = WeaponClass.Gun;
     [SerializeField]
     private int _weaponRange;
 
@@ -32,7 +32,7 @@ public class CharacterCombat : CharacterMove
     {
         if (_isMoveMode)
         {
-            _isCombatMode = false;
+            //_isCombatMode = false;
 
             if (!isMoving)
             {
@@ -51,15 +51,60 @@ public class CharacterCombat : CharacterMove
         
         if (_isCombatMode)
         {
-            _isMoveMode = false;
+            switch (_weaponClass)
+            {
+                case WeaponClass.Melee:
+                    _weaponRange = 2;
+                    break;
+                case WeaponClass.Gun:
+                    _weaponRange = 5;
+                    break;
+                case WeaponClass.Rifle:
+                    _weaponRange = 5;
+                    break;
+                case WeaponClass.MiniGun:
+                    _weaponRange = 5;
+                    break;
+                default:
+                    Debug.Log("No Weapon Selected");
+                    break;
+
+            }
+
+            
         }
 
 
         
+        if(Input.GetKeyDown(KeyCode.H))
+        {
+            ChangeMode();            
+        }
+
 
 
 
     }
+
+    public void ChangeMode()
+    {
+        if(_isMoveMode)
+        {
+            _isCombatMode = true;
+            _isMoveMode = false;
+            
+        }
+        else if (_isCombatMode)
+        {
+            _isCombatMode = false;
+            _isMoveMode = true;            
+            isTilesFound = false;
+        }
+
+        GridManager.instance.ClearSelectableTiles();
+    }
+
+    //public void 
 
 
 }

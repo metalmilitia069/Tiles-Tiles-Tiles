@@ -125,6 +125,14 @@ public class Tile : MonoBehaviour
                 {
                     listOfNearbyValidTiles.Add(referenceTile);
                 }
+                else
+                {
+                    if (hit.transform.GetComponent<EnemyBaseClass>())
+                    {
+                        listOfNearbyValidTiles.Add(referenceTile);
+                    }
+                }
+
             }
         }
     }

@@ -360,7 +360,7 @@ Transform:
   m_Children:
   - {fileID: 1196149816}
   m_Father: {fileID: 0}
-  m_RootOrder: 12
+  m_RootOrder: 13
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &104684101
 MonoBehaviour:
@@ -707,7 +707,7 @@ Transform:
   - {fileID: 1292263367}
   - {fileID: 647128624}
   m_Father: {fileID: 0}
-  m_RootOrder: 7
+  m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &503727516 stripped
 Transform:
@@ -813,9 +813,8 @@ Transform:
   m_Children:
   - {fileID: 2052390582}
   - {fileID: 1294687311}
-  - {fileID: 1224280839}
   m_Father: {fileID: 0}
-  m_RootOrder: 10
+  m_RootOrder: 11
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &517701740
 PrefabInstance:
@@ -1100,6 +1099,7 @@ MonoBehaviour:
   listOfSelectableTiles: []
   listOfAllTilesInLevel: []
   tilePlaceholder: {fileID: 0}
+  _isCombatMode: 0
 --- !u!4 &621362130
 Transform:
   m_ObjectHideFlags: 0
@@ -1112,7 +1112,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 3
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &647128624 stripped
 Transform:
@@ -1240,7 +1240,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 1
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 50.668003, y: -149.531, z: -131.673}
 --- !u!1 &738772164
 GameObject:
@@ -1374,7 +1374,7 @@ Transform:
   - {fileID: 1270744511}
   - {fileID: 586567706}
   m_Father: {fileID: 0}
-  m_RootOrder: 9
+  m_RootOrder: 10
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &949182264
 PrefabInstance:
@@ -1546,7 +1546,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 0
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 41.59, y: 180, z: 0}
 --- !u!4 &1048264717 stripped
 Transform:
@@ -1712,12 +1712,12 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1224280838}
   m_LocalRotation: {x: -0, y: 0.7071068, z: -0, w: 0.7071068}
-  m_LocalPosition: {x: -0.09376812, y: -2.7237039, z: 1.4654531}
+  m_LocalPosition: {x: 9.980083, y: 1.0500002, z: -2.5815773}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 6832304}
-  m_Father: {fileID: 510733564}
-  m_RootOrder: 2
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1224280840
 MonoBehaviour:
@@ -1743,6 +1743,10 @@ MonoBehaviour:
   movingEdge: 0
   jumpTarget: {x: 0, y: 0, z: 0}
   jumpVelocity: 4.5
+  _isCombatMode: 0
+  _isMoveMode: 1
+  _weaponClass: 1
+  _weaponRange: 0
 --- !u!136 &1224280841
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -2333,7 +2337,7 @@ Transform:
   m_Children:
   - {fileID: 303170325}
   m_Father: {fileID: 0}
-  m_RootOrder: 8
+  m_RootOrder: 9
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1896995449
 GameObject:
@@ -2426,7 +2430,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 6
+  m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1909678543
 GameObject:
@@ -2608,7 +2612,7 @@ PrefabInstance:
     - target: {fileID: -4216859302048453862, guid: 62952b1ff22c86140afd4a5643b474c0,
         type: 3}
       propertyPath: m_RootOrder
-      value: 5
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: -4216859302048453862, guid: 62952b1ff22c86140afd4a5643b474c0,
         type: 3}
@@ -2761,7 +2765,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 2
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &2146786382
 GameObject:
@@ -2855,7 +2859,7 @@ Transform:
   m_Children:
   - {fileID: 880073816}
   m_Father: {fileID: 0}
-  m_RootOrder: 11
+  m_RootOrder: 12
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &3868104349059965313
 PrefabInstance:
@@ -2902,7 +2906,7 @@ PrefabInstance:
     - target: {fileID: 6249545593122407974, guid: 946fad385fcaa65468c81329c5d29768,
         type: 3}
       propertyPath: m_RootOrder
-      value: 4
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 6249545593122407974, guid: 946fad385fcaa65468c81329c5d29768,
         type: 3}
