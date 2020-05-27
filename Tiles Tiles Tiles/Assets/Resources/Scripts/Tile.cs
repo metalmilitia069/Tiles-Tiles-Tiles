@@ -134,14 +134,8 @@ public class Tile : MonoBehaviour
                     if(!this.isMoveMode)
                     {
                         if (hit.transform.GetComponent<EnemyBaseClass>())
-                        {
-                            //referenceTile.isMoveMode = false;
-                            //if (!referenceTile.isMoveMode)
-                            //{
-                            //    Debug.Log("xibiru");
-                                listOfNearbyValidTiles.Add(referenceTile);
-                            //}
-
+                        {                           
+                            listOfNearbyValidTiles.Add(referenceTile);
                         }
                     }
                 }

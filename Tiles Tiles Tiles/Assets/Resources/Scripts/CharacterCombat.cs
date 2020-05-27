@@ -21,6 +21,10 @@ public class CharacterCombat : CharacterMove
     //[SerializeField]
     //private int _weaponRange;
 
+
+    [SerializeField]
+    private List<EnemyBaseClass> _listOfScannedEnemies;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -74,6 +78,7 @@ public class CharacterCombat : CharacterMove
             if (!isAttackRangeFound)
             {
                 GridManager.instance.CalculateAttackPath(this.gameObject);
+                ScanForEnemies();
             }
 
 
@@ -140,7 +145,27 @@ public class CharacterCombat : CharacterMove
         _weaponClass = (WeaponClass)index;
         isAttackRangeFound = false;
 
+        GridManager.instance.ClearSelectableTiles();
     }
+
+    public void ScanForEnemies()
+    {
+        _listOfScannedEnemies.Clear();
+
+        foreach (var item in GridManager.instance.listOfSelectableTiles)
+        {
+            RaycastHit hit;
+            if (Physics.Raycast(item.transform.position, Vector3.up, out hit, 1))
+            {
+                EnemyBaseClass enemyPlaceHolder = hit.collider.GetComponent<EnemyBaseClass>();
+                if (enemyPlaceHolder)
+                {
+                    _listOfScannedEnemies.Add(enemyPlaceHolder);
+                }
+            }
+        }
+    }
+
 
 
 }
