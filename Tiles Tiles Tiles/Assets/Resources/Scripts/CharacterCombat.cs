@@ -25,10 +25,18 @@ public class CharacterCombat : CharacterMove
     [SerializeField]
     private List<EnemyBaseClass> _listOfScannedEnemies;
 
+    public GameObject weaponGripPlace;
+
+    //TEST 
+    public WeaponBaseClass weaponPrefab;
+
     // Start is called before the first frame update
     void Start()
     {
-        
+        Instantiate(weaponPrefab, this.transform);
+        //Instantiate(weaponPrefab);
+        weaponPrefab.weaponGripReal.transform.position = weaponGripPlace.transform.position;
+        //weaponPrefab.transform.parent = this.transform;
     }
 
     // Update is called once per frame
@@ -94,7 +102,10 @@ public class CharacterCombat : CharacterMove
 
         if (Input.GetKeyDown(KeyCode.F))
         {
-            ChangeWeapon();
+            if (_isCombatMode)
+            {
+                ChangeWeapon();
+            }
         }
 
 
@@ -188,8 +199,6 @@ public class CharacterCombat : CharacterMove
                     }
                 }
             }
-
-
         }
     }
 
