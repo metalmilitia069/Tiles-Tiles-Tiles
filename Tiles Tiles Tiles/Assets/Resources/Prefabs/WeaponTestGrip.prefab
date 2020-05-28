@@ -103,7 +103,7 @@ GameObject:
   m_Component:
   - component: {fileID: 310693855641158232}
   m_Layer: 0
-  m_Name: FirePlace
+  m_Name: WeaponFirePoint
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -242,7 +242,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6206382721099393852}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.625, y: 0, z: 0.206}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 6234782056375075182}
@@ -262,7 +262,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 97e7d629dd8c7de488ee53e712d887d5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  weaponFirePoint: {fileID: 0}
+  weaponFirePoint: {fileID: 2471320031145829262}
   projectilePrefab: {fileID: 0}
   weaponClass: 0
   range: 5

@@ -53,4 +53,16 @@ public class WeaponBaseClass : MonoBehaviour
     {
         
     }
+
+    public void Attack(CharacterCombat character, EnemyBaseClass enemy)
+    {
+        Ray ray = new Ray(weaponFirePoint.transform.position, enemy.transform.position);//Input.mousePosition);
+        //Debug.DrawRay(weaponFirePoint.transform.position, enemy.transform.position, Color.red, 1);//Input.mousePosition, Color.red, 1);
+        RaycastHit hit;
+        if (Physics.Raycast(ray, out hit))
+        {
+            
+        }
+
+    }
 }

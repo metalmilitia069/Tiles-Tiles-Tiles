@@ -32,12 +32,14 @@ public class CharacterCombat : CharacterMove
 
     //TEST 
     public GameObject weaponPrefab;
+    public GameObject weaponInstance;
 
     // Start is called before the first frame update
     void Start()
     {
-        Instantiate(weaponPrefab, this.transform);
-        weaponPrefab.transform.localPosition = weaponGripPlace.transform.localPosition;
+        weaponInstance = Instantiate(weaponPrefab, this.transform);
+        //weaponPrefab.transform.localPosition = weaponGripPlace.transform.localPosition;
+        weaponInstance.transform.localPosition = weaponGripPlace.transform.localPosition;
 
         //Instantiate(weaponPrefab);
         //weaponPrefab.transform.position = weaponGripPlace.transform.position;
@@ -214,6 +216,8 @@ public class CharacterCombat : CharacterMove
     {
         //EventAttackTarget();
         Debug.Log("The Enemy " + enemy.name + " is Being Attacked By " + this.gameObject.name + " Using " + _weaponClass);
+        //Debug.DrawRay(weaponInstance.GetComponent<WeaponBaseClass>().weaponFirePoint.transform.position, enemy.transform.position, Color.red, 1);
+        weaponInstance.GetComponent<WeaponBaseClass>().Attack(this, enemy);
     }
 
 
