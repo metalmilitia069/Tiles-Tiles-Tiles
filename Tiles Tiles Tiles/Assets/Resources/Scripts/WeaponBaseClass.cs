@@ -2,13 +2,45 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+
+//[System.Serializable]
+//public enum WeaponClass
+//{
+//    Melee,
+//    Gun,
+//    Rifle,
+//    MiniGun,
+//}
 public class WeaponBaseClass : MonoBehaviour
 {
-    public GameObject weaponPrefab;
-    public GameObject weaponBody;
-    public GameObject weaponGripPlace;
+    //public GameObject weaponPrefab;
+    //public GameObject weaponBody;
+    //public GameObject weaponGripPlace;
+    //public GameObject weaponGripReal;
     public GameObject weaponFirePoint;
-    public GameObject weaponGripReal;
+    public GameObject projectilePrefab;
+
+    public WeaponClass weaponClass;
+
+    //Weapon Stats Calculations
+    
+    public int range;
+    public int optimalRange;
+    public int minDamage;
+    public int maxDamage;
+    public int expectedDamage;
+    public int calculatedDamage;
+    
+
+    public float criticalChange;
+    public float successShotProbabilty;
+    public float penalty;
+
+    //Weapon Stats Bullet Behavior
+
+    public bool hasSpread = false;
+    public float fireRate;
+
 
     // Start is called before the first frame update
     void Start()
@@ -19,13 +51,6 @@ public class WeaponBaseClass : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.A))
-        {
-            Debug.Log("WeaponPrefab Coord is: " + weaponPrefab.transform.position);
-            Debug.Log("WeaponBody Coord is: " + weaponBody.transform.position);
-            Debug.Log("WeaponGripPlace Coord is: " + weaponGripPlace.transform.position);
-            Debug.Log("WeaponGripReal Coord is: " + weaponGripReal.transform.position);
-            Debug.Log("WeaponFirePoint Coord is: " + weaponFirePoint.transform.position);
-        }
+        
     }
 }

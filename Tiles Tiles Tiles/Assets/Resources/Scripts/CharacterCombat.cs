@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-[System.Serializable]
+//[System.Serializable]
 public enum WeaponClass
 {
     Melee,
@@ -27,6 +27,9 @@ public class CharacterCombat : CharacterMove
 
     public GameObject weaponGripPlace;
 
+    public delegate void OnAttack(WeaponBaseClass weaponBaseClass);
+    public static event OnAttack EventAttackTarget;
+
     //TEST 
     public GameObject weaponPrefab;
 
@@ -34,8 +37,9 @@ public class CharacterCombat : CharacterMove
     void Start()
     {
         Instantiate(weaponPrefab, this.transform);
-        //Instantiate(weaponPrefab);
         weaponPrefab.transform.localPosition = weaponGripPlace.transform.localPosition;
+
+        //Instantiate(weaponPrefab);
         //weaponPrefab.transform.position = weaponGripPlace.transform.position;
         //weaponPrefab.transform.SetParent(this.transform);
         //weaponPrefab.transform.parent = this.transform;
@@ -208,6 +212,7 @@ public class CharacterCombat : CharacterMove
 
     public void Attack(EnemyBaseClass enemy)
     {
+        //EventAttackTarget();
         Debug.Log("The Enemy " + enemy.name + " is Being Attacked By " + this.gameObject.name + " Using " + _weaponClass);
     }
 

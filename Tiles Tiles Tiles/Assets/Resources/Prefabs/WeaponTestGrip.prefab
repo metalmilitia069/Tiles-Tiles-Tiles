@@ -228,7 +228,7 @@ GameObject:
   - component: {fileID: 1376564153967342562}
   - component: {fileID: 1846141360}
   m_Layer: 0
-  m_Name: Grip
+  m_Name: WeaponTestGrip
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -262,8 +262,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 97e7d629dd8c7de488ee53e712d887d5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  weaponPrefab: {fileID: 0}
-  weaponBody: {fileID: 0}
-  weaponGripPlace: {fileID: 0}
   weaponFirePoint: {fileID: 0}
-  weaponGripReal: {fileID: 0}
+  projectilePrefab: {fileID: 0}
+  weaponClass: 0
+  range: 5
+  optimalRange: 3
+  minDamage: 2
+  maxDamage: 5
+  expectedDamage: 0
+  calculatedDamage: 0
+  criticalChange: 0.5
+  successShotProbabilty: 0
+  penalty: 0
+  hasSpread: 0
+  fireRate: 0
