@@ -28,16 +28,20 @@ public class CharacterCombat : CharacterMove
     public GameObject weaponGripPlace;
 
     //TEST 
-    public WeaponBaseClass weaponPrefab;
+    public GameObject weaponPrefab;
 
     // Start is called before the first frame update
     void Start()
     {
         Instantiate(weaponPrefab, this.transform);
         //Instantiate(weaponPrefab);
-        weaponPrefab.weaponGripReal.transform.position = weaponGripPlace.transform.position;
+        weaponPrefab.transform.localPosition = weaponGripPlace.transform.localPosition;
+        //weaponPrefab.transform.position = weaponGripPlace.transform.position;
+        //weaponPrefab.transform.SetParent(this.transform);
         //weaponPrefab.transform.parent = this.transform;
     }
+
+    
 
     // Update is called once per frame
     void Update()
