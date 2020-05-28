@@ -333,7 +333,7 @@ MonoBehaviour:
   m_SerializedCustomFieldsNames: []
   m_SerializedCustomFieldsValues: []
   m_PlayModeViewName: GameView
-  m_ShowGizmos: 1
+  m_ShowGizmos: 0
   m_TargetDisplay: 0
   m_ClearColor: {r: 0, g: 0, b: 0, a: 0}
   m_TargetSize: {x: 788, y: 443}
@@ -343,7 +343,7 @@ MonoBehaviour:
   m_MaximizeOnPlay: 0
   m_UseMipMap: 0
   m_VSyncEnabled: 0
-  m_Gizmos: 1
+  m_Gizmos: 0
   m_Stats: 0
   m_SelectedSizes: 05000000000000000000000000000000000000000000000000000000000000000000000000000000
   m_ZoomArea:
@@ -430,9 +430,9 @@ MonoBehaviour:
   m_PlayAudio: 0
   m_AudioPlay: 0
   m_Position:
-    m_Target: {x: 13.955, y: 1.0500002, z: -6.55}
+    m_Target: {x: 10.88223, y: 4.9414763, z: -0.1033307}
     speed: 2
-    m_Value: {x: 13.955, y: 1.0500002, z: -6.55}
+    m_Value: {x: 10.88223, y: 4.9414763, z: -0.1033307}
   m_RenderMode: 0
   m_CameraMode:
     drawMode: 0
@@ -478,9 +478,9 @@ MonoBehaviour:
     m_GridAxis: 1
     m_gridOpacity: 0.5
   m_Rotation:
-    m_Target: {x: 0.1320773, y: -0.80060905, z: 0.19097686, w: 0.5526041}
+    m_Target: {x: -0.0016343173, y: -0.9571112, z: 0.29011077, w: -0.0060999105}
     speed: 2
-    m_Value: {x: 0.13205996, y: -0.8005039, z: 0.19095178, w: 0.5525315}
+    m_Value: {x: -0.0011989902, y: -0.9569921, z: 0.29007432, w: -0.0046636174}
   m_Size:
     m_Target: 1.2247449
     speed: 2
@@ -657,9 +657,9 @@ MonoBehaviour:
   m_SceneHierarchy:
     m_TreeViewState:
       scrollPos: {x: 0, y: 0}
-      m_SelectedIDs: 7e330000
-      m_LastClickedID: 13182
-      m_ExpandedIDs: 98daffff66faffff70faffff70fbffff7e33000000340000
+      m_SelectedIDs: 
+      m_LastClickedID: 0
+      m_ExpandedIDs: 169fffff62faffff70faffff70fbffff00340000
       m_RenameOverlay:
         m_UserAcceptedRename: 0
         m_Name: 
