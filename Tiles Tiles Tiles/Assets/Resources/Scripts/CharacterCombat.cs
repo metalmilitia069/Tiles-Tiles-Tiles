@@ -217,6 +217,7 @@ public class CharacterCombat : CharacterMove
         //EventAttackTarget();
         Debug.Log("The Enemy " + enemy.name + " is Being Attacked By " + this.gameObject.name + " Using " + _weaponClass);
         //Debug.DrawRay(weaponInstance.GetComponent<WeaponBaseClass>().weaponFirePoint.transform.position, enemy.transform.position, Color.red, 1);
+        transform.LookAt(enemy.transform);
         weaponInstance.GetComponent<WeaponBaseClass>().Attack(this, enemy);
     }
 

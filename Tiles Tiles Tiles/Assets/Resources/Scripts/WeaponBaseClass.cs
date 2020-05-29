@@ -42,6 +42,9 @@ public class WeaponBaseClass : MonoBehaviour
     public float fireRate;
 
 
+
+
+
     // Start is called before the first frame update
     void Start()
     {
@@ -56,12 +59,24 @@ public class WeaponBaseClass : MonoBehaviour
 
     public void Attack(CharacterCombat character, EnemyBaseClass enemy)
     {
-        Ray ray = new Ray(weaponFirePoint.transform.position, enemy.transform.position);//Input.mousePosition);
-        //Debug.DrawRay(weaponFirePoint.transform.position, enemy.transform.position, Color.red, 1);//Input.mousePosition, Color.red, 1);
+        transform.LookAt(enemy.transform);
+        Ray ray = new Ray(weaponFirePoint.transform.position, enemy.transform.forward);//enemy.transform.position);//Input.mousePosition);
+        Debug.DrawRay(weaponFirePoint.transform.position, enemy.transform.forward * 20, Color.red, 1); //enemy.transform.position, Color.red, 1);//Input.mousePosition, Color.red, 1);
         RaycastHit hit;
+        Debug.Log(ray.origin + " " + ray.direction);
         if (Physics.Raycast(ray, out hit))
         {
-            
+            TileModifier scanCover = hit.collider.transform.GetComponent<TileModifier>();
+            if (scanCover)
+            {
+                Debug.Log("hit cover!!!");
+            }
+            EnemyBaseClass scanEnemy = hit.collider.transform.GetComponent<EnemyBaseClass>();
+            if (scanEnemy)
+            {
+                Debug.Log("hit enemy!");
+            }
+
         }
 
     }
