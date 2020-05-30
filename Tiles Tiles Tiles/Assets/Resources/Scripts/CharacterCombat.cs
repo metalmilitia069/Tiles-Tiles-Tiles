@@ -52,6 +52,7 @@ public class CharacterCombat : CharacterMove
             {
                 weaponInstanceBelt[weaponIndex].transform.localPosition = weaponGripPlace.transform.localPosition;
                 _currentWeaponIndex = weaponIndex;
+                _weaponRange = weaponInstanceBelt[_currentWeaponIndex].GetComponent<WeaponBaseClass>().weaponRange;
             }
             else
             {
@@ -62,6 +63,8 @@ public class CharacterCombat : CharacterMove
         }
 
         
+
+
     }
 
     
@@ -90,28 +93,31 @@ public class CharacterCombat : CharacterMove
         
         if (_isCombatMode)
         {
-            switch (_weaponClass)
-            {
-                case WeaponClass.Melee:
-                    _weaponRange = 1;
-                    break;
-                case WeaponClass.Gun:
-                    _weaponRange = 5;
-                    break;
-                case WeaponClass.Rifle:
-                    _weaponRange = 7;
-                    break;
-                case WeaponClass.MiniGun:
-                    _weaponRange = 4;
-                    break;
-                default:
-                    Debug.Log("No Weapon Selected");
-                    break;
+            //switch (_weaponClass)
+            //{
+            //    case WeaponClass.Melee:
+            //        _weaponRange = 1;
+            //        break;
+            //    case WeaponClass.Gun:
+            //        _weaponRange = 5;
+            //        break;
+            //    case WeaponClass.Rifle:
+            //        _weaponRange = 7;
+            //        break;
+            //    case WeaponClass.MiniGun:
+            //        _weaponRange = 4;
+            //        break;
+            //    default:
+            //        Debug.Log("No Weapon Selected");
+            //        break;
 
-            }
+            //}
+
+            
 
             if (!isAttackRangeFound)
             {
+                _weaponRange = weaponInstanceBelt[_currentWeaponIndex].GetComponent<WeaponBaseClass>().weaponRange;
                 GridManager.instance.CalculateAttackPath(this.gameObject);
                 ScanForEnemies();
             }
@@ -164,21 +170,7 @@ public class CharacterCombat : CharacterMove
     int index = 0;
 
     public void ChangeWeapon()
-    {
-        //int[] weaponArray = { (int)WeaponClass.Melee, (int)WeaponClass.Gun, (int)WeaponClass.Rifle, (int)WeaponClass.MiniGun };
-
-
-        //if (index < weaponArray.Length-1)
-        //{
-        //    index++;
-        //}
-        //else
-        //{
-        //    index = 0;
-        //}
-
-        //_weaponClass = (WeaponClass)index;
-        
+    {   
         weaponInstanceBelt[_currentWeaponIndex].GetComponent<WeaponBaseClass>().isCurrent = false;
         weaponInstanceBelt[_currentWeaponIndex].transform.localPosition = weaponHolsters[_currentWeaponIndex].transform.localPosition;
 
@@ -195,9 +187,7 @@ public class CharacterCombat : CharacterMove
         weaponInstanceBelt[_currentWeaponIndex].transform.localPosition = weaponGripPlace.transform.localPosition;
 
         _weaponClass = weaponInstanceBelt[_currentWeaponIndex].GetComponent<WeaponBaseClass>().weaponClass;
-
-        //weaponInstanceBelt[_currentWeaponIndex].GetComponent<WeaponBaseClass>().weaponClass = (WeaponClass)_currentWeaponIndex;
-
+        //_weaponRange = weaponInstanceBelt[_currentWeaponIndex].GetComponent<WeaponBaseClass>().weaponRange;
 
         isAttackRangeFound = false;
 

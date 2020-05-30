@@ -27,7 +27,7 @@ public class WeaponBaseClass : MonoBehaviour
 
     //Weapon Stats Calculations
     
-    public int range;
+    public int weaponRange;
     public int optimalRange;
     public int minDamage;
     public int maxDamage;
@@ -52,6 +52,25 @@ public class WeaponBaseClass : MonoBehaviour
     void Start()
     {
         //weaponClass
+        switch (weaponClass)
+        {
+            case WeaponClass.Melee:
+                weaponRange = 1;
+                break;
+            case WeaponClass.Gun:
+                weaponRange = 5;
+                break;
+            case WeaponClass.Rifle:
+                weaponRange = 7;
+                break;
+            case WeaponClass.MiniGun:
+                weaponRange = 4;
+                break;
+            default:
+                Debug.Log("No Weapon Selected");
+                break;
+
+        }
     }
 
     // Update is called once per frame
