@@ -4,13 +4,13 @@ using UnityEngine;
 
 
 //[System.Serializable]
-//public enum WeaponClass
-//{
-//    Melee,
-//    Gun,
-//    Rifle,
-//    MiniGun,
-//}
+public enum WeaponClass
+{
+    Melee,
+    Gun,
+    Rifle,
+    MiniGun,
+}
 public class WeaponBaseClass : MonoBehaviour
 {
     //public GameObject weaponPrefab;
@@ -18,9 +18,12 @@ public class WeaponBaseClass : MonoBehaviour
     //public GameObject weaponGripPlace;
     //public GameObject weaponGripReal;
     public GameObject weaponFirePoint;
+    public GameObject weaponFireDirection;
     public GameObject projectilePrefab;
 
     public WeaponClass weaponClass;
+
+    public bool isCurrent = false;
 
     //Weapon Stats Calculations
     
@@ -33,7 +36,7 @@ public class WeaponBaseClass : MonoBehaviour
     
 
     public float criticalChange;
-    public float successShotProbabilty;
+    public float successShotProbabilty = 1;
     public float penalty;
 
     //Weapon Stats Bullet Behavior
@@ -48,7 +51,7 @@ public class WeaponBaseClass : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
+        //weaponClass
     }
 
     // Update is called once per frame
@@ -60,24 +63,24 @@ public class WeaponBaseClass : MonoBehaviour
     public void Attack(CharacterCombat character, EnemyBaseClass enemy)
     {
         transform.LookAt(enemy.transform);
-        Ray ray = new Ray(weaponFirePoint.transform.position, enemy.transform.forward);//enemy.transform.position);//Input.mousePosition);
-        Debug.DrawRay(weaponFirePoint.transform.position, enemy.transform.forward * 20, Color.red, 1); //enemy.transform.position, Color.red, 1);//Input.mousePosition, Color.red, 1);
-        RaycastHit hit;
-        Debug.Log(ray.origin + " " + ray.direction);
-        if (Physics.Raycast(ray, out hit))
-        {
-            TileModifier scanCover = hit.collider.transform.GetComponent<TileModifier>();
-            if (scanCover)
-            {
-                Debug.Log("hit cover!!!");
-            }
-            EnemyBaseClass scanEnemy = hit.collider.transform.GetComponent<EnemyBaseClass>();
-            if (scanEnemy)
-            {
-                Debug.Log("hit enemy!");
-            }
+        Ray ray = new Ray(weaponFirePoint.transform.position, transform.forward * 100);//enemy.transform.position);//Input.mousePosition);
+        Debug.DrawRay(weaponFirePoint.transform.position, transform.forward * 100, Color.red, 2);//enemy.transform.position, Color.red, 1);//Input.mousePosition, Color.red, 1);
+        
+        RaycastHit[] hits;
+        hits = Physics.RaycastAll(ray, Mathf.Infinity);
 
+        foreach (var hit in hits)
+        {
+            TileModifier cover = hit.collider.GetComponent<TileModifier>();
+            if (cover && cover.isCover)
+            {
+                if (cover.isHalfCover)
+                {
+                     
+                }
+            }
         }
+        
 
     }
 }

@@ -154,6 +154,7 @@ Transform:
   m_LocalScale: {x: 0.054364555, y: 0.05055827, z: 0.36413997}
   m_Children:
   - {fileID: 310693855641158232}
+  - {fileID: 496046549091436927}
   m_Father: {fileID: 1376564153967342562}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -263,8 +264,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   weaponFirePoint: {fileID: 2471320031145829262}
+  weaponFireDirection: {fileID: 6890479540777052040}
   projectilePrefab: {fileID: 0}
-  weaponClass: 0
+  weaponClass: 1
   range: 5
   optimalRange: 3
   minDamage: 2
@@ -276,3 +278,33 @@ MonoBehaviour:
   penalty: 0
   hasSpread: 0
   fireRate: 0
+--- !u!1 &6890479540777052040
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 496046549091436927}
+  m_Layer: 0
+  m_Name: WeaponFireDirection
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &496046549091436927
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6890479540777052040}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 1.004}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 6234782056375075182}
+  m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}

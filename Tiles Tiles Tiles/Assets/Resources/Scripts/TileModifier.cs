@@ -7,7 +7,15 @@ public class TileModifier : MonoBehaviour
     [SerializeField]
     private bool isLatter;
     [SerializeField]
-    private bool isCover;
+    public bool isCover;
+    [SerializeField]
+    public bool isHalfCover = true;
+    [SerializeField]
+    public bool isFullCover = false;
+    [SerializeField]
+    public float halfCoverPenalty = 0.20f;
+    [SerializeField]
+    public float fullCoverPenalty = 0.90f;
 
     [SerializeField]
     private float _latterHeight = 5;
@@ -70,7 +78,16 @@ public class TileModifier : MonoBehaviour
         if (!isTypeChanged)
         {
             ChangeTileType();
-        }        
+        }
+
+        if (isHalfCover)
+        {
+            isFullCover = false;
+        }
+        else
+        {
+            isFullCover = true;
+        }
     }
 
     private void ChangeTileType()
