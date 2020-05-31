@@ -12,11 +12,7 @@ public enum WeaponClass
     MiniGun,
 }
 public class WeaponBaseClass : MonoBehaviour
-{
-    //public GameObject weaponPrefab;
-    //public GameObject weaponBody;
-    //public GameObject weaponGripPlace;
-    //public GameObject weaponGripReal;
+{    
     public GameObject weaponFirePoint;
     public GameObject weaponFireDirection;
     public GameObject projectilePrefab;
@@ -61,7 +57,7 @@ public class WeaponBaseClass : MonoBehaviour
                 weaponRange = 5;
                 break;
             case WeaponClass.Rifle:
-                weaponRange = 12;
+                weaponRange = 7;
                 break;
             case WeaponClass.MiniGun:
                 weaponRange = 4;
@@ -95,8 +91,17 @@ public class WeaponBaseClass : MonoBehaviour
             {
                 if (cover.isHalfCover)
                 {
-                     
+                    Debug.Log("Hit HALF Cover"); 
                 }
+                else if (cover.isFullCover)
+                {
+                    Debug.Log("Hit FULL Cover");
+                }
+            }
+            EnemyBaseClass enemyclass = hit.collider.GetComponent<EnemyBaseClass>();
+            if (enemyclass)
+            {
+                Debug.Log("Hit Enemy!!!");
             }
         }
         

@@ -2,29 +2,16 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-//[System.Serializable]
-//public enum WeaponClass
-//{
-//    Melee,
-//    Gun,
-//    Rifle,
-//    MiniGun,
-//}
+
 public class CharacterCombat : CharacterMove
-{
-    //[SerializeField]
-    //public bool _isCombatMode = false;
-    //[SerializeField]
-    //public bool _isMoveMode = true;
+{    
     [SerializeField]
-    private WeaponClass _weaponClass;// = WeaponClass.Gun;
-    //[SerializeField]
-    //private int _weaponRange;
-    private int _currentWeaponIndex;
+    protected WeaponClass _weaponClass;// = WeaponClass.Gun;    
+    protected int _currentWeaponIndex;
 
 
     [SerializeField]
-    private List<EnemyBaseClass> _listOfScannedEnemies;
+    protected List<EnemyBaseClass> _listOfScannedEnemies;
 
     public GameObject weaponGripPlace;
 
@@ -40,105 +27,86 @@ public class CharacterCombat : CharacterMove
     // Start is called before the first frame update
     void Start()
     {
-        weaponInstanceBelt = new GameObject[weaponPrefabBelt.Length];
+        //weaponInstanceBelt = new GameObject[weaponPrefabBelt.Length];
         
 
-        int weaponIndex = 0;
+        //int weaponIndex = 0;
 
-        foreach (var weapon in weaponPrefabBelt)
-        {
-            weaponInstanceBelt[weaponIndex] = Instantiate(weapon, this.transform);
-            if (weaponInstanceBelt[weaponIndex].GetComponent<WeaponBaseClass>().isCurrent)
-            {
-                weaponInstanceBelt[weaponIndex].transform.localPosition = weaponGripPlace.transform.localPosition;
-                _currentWeaponIndex = weaponIndex;
-                _weaponClass = weaponInstanceBelt[_currentWeaponIndex].GetComponent<WeaponBaseClass>().weaponClass;
-                _weaponRange = weaponInstanceBelt[_currentWeaponIndex].GetComponent<WeaponBaseClass>().weaponRange;
-            }
-            else
-            {
-                Debug.Log("CUUU");
-                weaponInstanceBelt[weaponIndex].transform.localPosition = weaponHolsters[weaponIndex].transform.localPosition;
-            }
-                weaponIndex++;
-        }
-
-        
-
-
+        //foreach (var weapon in weaponPrefabBelt)
+        //{
+        //    weaponInstanceBelt[weaponIndex] = Instantiate(weapon, this.transform);
+        //    if (weaponInstanceBelt[weaponIndex].GetComponent<WeaponBaseClass>().isCurrent)
+        //    {
+        //        weaponInstanceBelt[weaponIndex].transform.localPosition = weaponGripPlace.transform.localPosition;
+        //        _currentWeaponIndex = weaponIndex;
+        //        _weaponClass = weaponInstanceBelt[_currentWeaponIndex].GetComponent<WeaponBaseClass>().weaponClass;
+        //        _weaponRange = weaponInstanceBelt[_currentWeaponIndex].GetComponent<WeaponBaseClass>().weaponRange;
+        //    }
+        //    else
+        //    {                
+        //        weaponInstanceBelt[weaponIndex].transform.localPosition = weaponHolsters[weaponIndex].transform.localPosition;
+        //    }
+        //        weaponIndex++;
+        //}
     }
-
-    
 
     // Update is called once per frame
     void Update()
     {
-        if (_isMoveMode)
-        {
-            //_isCombatMode = false;
+        //if (_isMoveMode)
+        //{
+        //    //_isCombatMode = false;
+        //    if (_listOfScannedEnemies.Count > 0)
+        //    {
+        //        foreach (var enemy in _listOfScannedEnemies)
+        //        {
+        //            enemy.canBeAttacked = false;
+        //        }
+        //    }
 
-            if (!isMoving)
-            {
-                ActivateMouseToMovement();
-            }
-            else
-            {
-                Move();
-            }
+        //    _listOfScannedEnemies.Clear();
 
-            if (!isTilesFound)
-            {
-                GridManager.instance.CalculateAvailablePath(this.gameObject);
-            }           
-        }
+        //    if (!isMoving)
+        //    {
+        //        ActivateMouseToMovement();
+        //    }
+        //    else
+        //    {
+        //        Move();
+        //    }
+
+        //    if (!isTilesFound)
+        //    {
+        //        GridManager.instance.CalculateAvailablePath(this.gameObject);
+        //    }           
+        //}
         
-        if (_isCombatMode)
-        {
-            //switch (_weaponClass)
-            //{
-            //    case WeaponClass.Melee:
-            //        _weaponRange = 1;
-            //        break;
-            //    case WeaponClass.Gun:
-            //        _weaponRange = 5;
-            //        break;
-            //    case WeaponClass.Rifle:
-            //        _weaponRange = 7;
-            //        break;
-            //    case WeaponClass.MiniGun:
-            //        _weaponRange = 4;
-            //        break;
-            //    default:
-            //        Debug.Log("No Weapon Selected");
-            //        break;
-
-            //}
-
+        //if (_isCombatMode)
+        //{
             
+        //    if (!isAttackRangeFound)
+        //    {
+        //        _weaponRange = weaponInstanceBelt[_currentWeaponIndex].GetComponent<WeaponBaseClass>().weaponRange;
+        //        GridManager.instance.CalculateAttackPath(this.gameObject);
+        //        ScanForEnemies();
+        //    }
 
-            if (!isAttackRangeFound)
-            {
-                _weaponRange = weaponInstanceBelt[_currentWeaponIndex].GetComponent<WeaponBaseClass>().weaponRange;
-                GridManager.instance.CalculateAttackPath(this.gameObject);
-                ScanForEnemies();
-            }
+        //    ActivateMouseToAttack();
 
-            ActivateMouseToAttack();
-
-        }
+        //}
         
-        if(Input.GetKeyDown(KeyCode.H))
-        {
-            ChangeMode();            
-        }
+        //if(Input.GetKeyDown(KeyCode.H))
+        //{
+        //    ChangeMode();            
+        //}
 
-        if (Input.GetKeyDown(KeyCode.F))
-        {
-            if (_isCombatMode)
-            {
-                ChangeWeapon();
-            }
-        }
+        //if (Input.GetKeyDown(KeyCode.F))
+        //{
+        //    if (_isCombatMode)
+        //    {
+        //        ChangeWeapon();
+        //    }
+        //}
     }
 
     public void ChangeMode()
@@ -168,8 +136,6 @@ public class CharacterCombat : CharacterMove
         GridManager.instance.ClearSelectableTiles();
     }
 
-    int index = 0;
-
     public void ChangeWeapon()
     {   
         weaponInstanceBelt[_currentWeaponIndex].GetComponent<WeaponBaseClass>().isCurrent = false;
@@ -187,8 +153,7 @@ public class CharacterCombat : CharacterMove
         weaponInstanceBelt[_currentWeaponIndex].GetComponent<WeaponBaseClass>().isCurrent = true;
         weaponInstanceBelt[_currentWeaponIndex].transform.localPosition = weaponGripPlace.transform.localPosition;
 
-        _weaponClass = weaponInstanceBelt[_currentWeaponIndex].GetComponent<WeaponBaseClass>().weaponClass;
-        //_weaponRange = weaponInstanceBelt[_currentWeaponIndex].GetComponent<WeaponBaseClass>().weaponRange;
+        _weaponClass = weaponInstanceBelt[_currentWeaponIndex].GetComponent<WeaponBaseClass>().weaponClass;        
 
         isAttackRangeFound = false;
 
@@ -197,6 +162,13 @@ public class CharacterCombat : CharacterMove
 
     public void ScanForEnemies()
     {
+        if (_listOfScannedEnemies.Count > 0)
+        {
+            foreach (var enemy in _listOfScannedEnemies)
+            {
+                enemy.canBeAttacked = false;
+            }
+        }
         _listOfScannedEnemies.Clear();
 
         foreach (var item in GridManager.instance.listOfSelectableTiles)
@@ -208,6 +180,8 @@ public class CharacterCombat : CharacterMove
                 if (enemyPlaceHolder)
                 {
                     _listOfScannedEnemies.Add(enemyPlaceHolder);
+                    enemyPlaceHolder.canBeAttacked = true;
+
                 }
             }
         }
@@ -238,15 +212,10 @@ public class CharacterCombat : CharacterMove
     }
 
     public void Attack(EnemyBaseClass enemy)
-    {
-        //EventAttackTarget();
+    {       
         Debug.Log("The Enemy " + enemy.name + " is Being Attacked By " + this.gameObject.name + " Using " + _weaponClass);
-        //Debug.DrawRay(weaponInstance.GetComponent<WeaponBaseClass>().weaponFirePoint.transform.position, enemy.transform.position, Color.red, 1);
-        transform.LookAt(enemy.transform);
-        //weaponInstance.GetComponent<WeaponBaseClass>().Attack(this, enemy);
+        
+        transform.LookAt(enemy.transform);        
         weaponInstanceBelt[_currentWeaponIndex].GetComponent<WeaponBaseClass>().Attack(this, enemy);
     }
-
-
-
 }
