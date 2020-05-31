@@ -61,7 +61,7 @@ public class WeaponBaseClass : MonoBehaviour
                 weaponRange = 5;
                 break;
             case WeaponClass.Rifle:
-                weaponRange = 7;
+                weaponRange = 12;
                 break;
             case WeaponClass.MiniGun:
                 weaponRange = 4;

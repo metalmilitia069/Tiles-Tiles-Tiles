@@ -52,6 +52,7 @@ public class CharacterCombat : CharacterMove
             {
                 weaponInstanceBelt[weaponIndex].transform.localPosition = weaponGripPlace.transform.localPosition;
                 _currentWeaponIndex = weaponIndex;
+                _weaponClass = weaponInstanceBelt[_currentWeaponIndex].GetComponent<WeaponBaseClass>().weaponClass;
                 _weaponRange = weaponInstanceBelt[_currentWeaponIndex].GetComponent<WeaponBaseClass>().weaponRange;
             }
             else
