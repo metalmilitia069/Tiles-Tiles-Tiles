@@ -22,21 +22,25 @@ public class WeaponBaseClass : MonoBehaviour
     public bool isCurrent = false;
 
     //Weapon Stats Calculations
-    
+    [Header("WEAPON STATS")]
     public int weaponRange;
     public int optimalRange;
     public int minDamage;
     public int maxDamage;
-    public int expectedDamage;
-    public int calculatedDamage;
+    public int calculatedBaseDamage;//
+    public int expectedDamage;//
+    public int calculatedDamage;//
+    public float distanceFromTarget;
     
 
-    public float criticalChange;
-    public float successShotProbabilty = 1;
-    public float penalty;
+    public float criticalChance;//
+    public float successShotProbability = 1;//
+    public float damagePenalty;
+    public float shotProbabilityPenalty;
+    public float weaponCriticalDamage;//
 
     //Weapon Stats Bullet Behavior
-
+    [Header("WEAPON BEHAVIOR")]
     public bool hasSpread = false;
     public float fireRate;
 
@@ -52,20 +56,23 @@ public class WeaponBaseClass : MonoBehaviour
         {
             case WeaponClass.Melee:
                 weaponRange = 1;
+                optimalRange = 1;
                 break;
             case WeaponClass.Gun:
                 weaponRange = 5;
+                optimalRange = 3;
                 break;
             case WeaponClass.Rifle:
                 weaponRange = 7;
+                optimalRange = 5;
                 break;
             case WeaponClass.MiniGun:
                 weaponRange = 4;
+                optimalRange = 3;
                 break;
             default:
                 Debug.Log("No Weapon Selected");
                 break;
-
         }
     }
 
@@ -75,7 +82,7 @@ public class WeaponBaseClass : MonoBehaviour
         
     }
 
-    public void Attack(CharacterCombat character, EnemyBaseClass enemy)
+    public void Attack(CharacterStats character, EnemyBaseClass enemy)//(CharacterCombat character, EnemyBaseClass enemy)
     {
         transform.LookAt(enemy.transform);
         Ray ray = new Ray(weaponFirePoint.transform.position, transform.forward * 100);//enemy.transform.position);//Input.mousePosition);
@@ -91,20 +98,29 @@ public class WeaponBaseClass : MonoBehaviour
             {
                 if (cover.isHalfCover)
                 {
-                    Debug.Log("Hit HALF Cover"); 
+                    Debug.Log("Hit HALF Cover");
+                    successShotProbability -= cover.halfCoverPenalty;
                 }
                 else if (cover.isFullCover)
                 {
                     Debug.Log("Hit FULL Cover");
+                    successShotProbability -= cover.fullCoverPenalty;
                 }
             }
             EnemyBaseClass enemyclass = hit.collider.GetComponent<EnemyBaseClass>();
             if (enemyclass)
             {
                 Debug.Log("Hit Enemy!!!");
+                distanceFromTarget = Vector3.Distance(character.transform.position, enemy.transform.position);
+                Debug.Log("Distance From The Target: " + distanceFromTarget);
+                CalculateBaseDamage();
             }
         }
-        
+    }
 
+    public void CalculateBaseDamage()
+    {
+        calculatedBaseDamage = Random.Range(minDamage, maxDamage + 1);
+        Debug.Log("calculated Base Damage = " + calculatedBaseDamage);
     }
 }

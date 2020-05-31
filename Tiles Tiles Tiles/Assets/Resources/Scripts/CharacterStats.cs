@@ -13,6 +13,8 @@ public class CharacterStats : CharacterCombat
     private float _criticalChanceModifier = 0.0f;
     [SerializeField]
     private int _attackRangeModifier = 0;
+    [SerializeField]
+    private float _criticalDamageModifier = 0;
 
     //TODO: Elemental Attack
     [Header("ELEMENTAL ATTACK STATS")]

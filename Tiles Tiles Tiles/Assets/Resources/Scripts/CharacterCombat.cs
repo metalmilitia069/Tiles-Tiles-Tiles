@@ -216,6 +216,6 @@ public class CharacterCombat : CharacterMove
         Debug.Log("The Enemy " + enemy.name + " is Being Attacked By " + this.gameObject.name + " Using " + _weaponClass);
         
         transform.LookAt(enemy.transform);        
-        weaponInstanceBelt[_currentWeaponIndex].GetComponent<WeaponBaseClass>().Attack(this, enemy);
+        weaponInstanceBelt[_currentWeaponIndex].GetComponent<WeaponBaseClass>().Attack((CharacterStats)this, enemy);
     }
 }
