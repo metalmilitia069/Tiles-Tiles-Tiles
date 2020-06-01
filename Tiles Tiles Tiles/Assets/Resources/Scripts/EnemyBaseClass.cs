@@ -6,7 +6,7 @@ public class EnemyBaseClass : MonoBehaviour
 {
     public bool canBeAttacked = false;
 
-    //Character Stats
+    //Enemy Stats
     //Attack Stats
     [Header("ATTACK STATS")]
     [SerializeField]
@@ -32,22 +32,22 @@ public class EnemyBaseClass : MonoBehaviour
     [Header("DEFENSE STATS")]
     //Defense Stats
     [SerializeField]
-    private int _armorNormal = 0;
+    public int armorNormal = 0;
     [SerializeField]
-    private int _armorBlindage = 0;
+    public int armorBlindage = 0;
     [SerializeField]
-    private float _dodgeChance = 0.0f;
+    public float dodgeChance = 0.0f;
 
     //TODO: Elemental Defense
     [Header("ELEMENTAL DEFENSE STATS")]
     [SerializeField]
-    private int _elementalDefFire = 0;
+    public int elementalDefFire = 0;
     [SerializeField]
-    private int _elementalDefElectricity = 0;
+    public int elementalDefElectricity = 0;
     [SerializeField]
-    private int _elementalDefCold = 0;
+    public int elementalDefCold = 0;
     [SerializeField]
-    private int _elementalDefPoison = 0;
+    public int elementalDefPoison = 0;
 
     // Start is called before the first frame update
     void Start()

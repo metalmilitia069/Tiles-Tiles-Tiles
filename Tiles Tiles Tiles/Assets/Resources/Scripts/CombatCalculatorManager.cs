@@ -21,22 +21,43 @@ public class CombatCalculatorManager : MonoBehaviour
     [SerializeField]
     private int _playerDamageModifier;
     [SerializeField]
-    private float _playerCriticalChanceModifier;
-    [SerializeField]
-    private int _playerAttackRangeModifier;
+    private float _playerCriticalChanceModifier;    
     [SerializeField]
     private float _playerCriticalDamageModifier;
 
     //TODO: Elemental Attack
     [Header("PLAYER GATHERED ELEMENTAL ATTACK STATS")]
     [SerializeField]
-    private int _elementalDmgFire = 0;
+    private int _playerElementalDmgFire;
     [SerializeField]
-    private int _elementalDmgElectricity = 0;
+    private int _playerElementalDmgElectricity;
     [SerializeField]
-    private int _elementalDmgCold = 0;
+    private int _playerElementalDmgCold;
     [SerializeField]
-    private int _elementalDmgPoison = 0;
+    private int _playerElementalDmgPoison;
+
+    [Header("DEFENSE STATS")]
+
+    [Header("ENEMY GATHERED DEFENSE STATS")]
+    //Defense Stats
+    [SerializeField]
+    private int _enemyArmorNormal;
+    [SerializeField]
+    private int _enemyArmorBlindage;
+    [SerializeField]
+    private float _enemyDodgeChance;
+
+    //TODO: Elemental Defense
+    [Header("ELEMENTAL DEFENSE STATS")]
+    [SerializeField]
+    private int _enemyElementalDefFire;
+    [SerializeField]
+    private int _enemyElementalDefElectricity;
+    [SerializeField]
+    private int _enemyElementalDefCold;
+    [SerializeField]
+    private int _enemyElementalDefPoison;
+
 
 
     #region Singleton
@@ -81,19 +102,22 @@ public class CombatCalculatorManager : MonoBehaviour
         _weaponCriticalDamage = weaponRef.weaponCriticalDamage;
     }
 
-    public void GatherEnemyDefenseStats()
+    public void GatherEnemyDefenseStats(EnemyBaseClass enemyRef)
     {
-
+        _enemyArmorNormal = enemyRef.armorNormal;
+        _enemyArmorBlindage = enemyRef.armorBlindage;
+        _enemyDodgeChance = enemyRef.dodgeChance;
     }
 
     public void GatherPlayerAttackStats(CharacterStats characterRef)
     {
-        _playerDamageModifier = characterRef.damageModifier;
-    
-        _playerCriticalChanceModifier = characterRef.criticalChanceModifier;
-        
-        _playerAttackRangeModifier = characterRef.attackRangeModifier;
-        
+        _playerDamageModifier = characterRef.damageModifier;    
+        _playerCriticalChanceModifier = characterRef.criticalChanceModifier;        
         _playerCriticalDamageModifier = characterRef.criticalDamageModifier;
+    }
+
+    public void FinalAttackCalculation()
+    {
+
     }
 }

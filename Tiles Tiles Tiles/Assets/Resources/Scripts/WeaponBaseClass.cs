@@ -164,6 +164,7 @@ public class WeaponBaseClass : MonoBehaviour
 
         CombatCalculatorManager.instance.GatherWeaponAttackStats(this);
 
+
         //Debug.Log("calculated Base Damage * Penalty * CoverAbsortion = " + calculatedBaseDamage);
         
         //Debug.Log("Shot Success Chance = " + successShotProbability * 100 + "%");

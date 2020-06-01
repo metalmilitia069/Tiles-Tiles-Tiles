@@ -220,6 +220,9 @@ public class CharacterCombat : CharacterMove
         
         transform.LookAt(enemy.transform);        
         weaponInstanceBelt[_currentWeaponIndex].GetComponent<WeaponBaseClass>().GatherWeaponAttackStats((CharacterStats)this, enemy);
+        CombatCalculatorManager.instance.GatherEnemyDefenseStats(enemy);
+        CombatCalculatorManager.instance.GatherPlayerAttackStats((CharacterStats)this);
+        CombatCalculatorManager.instance.FinalAttackCalculation();
 
     }
 }

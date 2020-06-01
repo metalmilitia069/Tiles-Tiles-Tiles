@@ -55,6 +55,7 @@ public class CharacterStats : CharacterCombat
         weaponInstanceBelt = new GameObject[weaponPrefabBelt.Length];
 
 
+
         int weaponIndex = 0;
 
         foreach (var weapon in weaponPrefabBelt)
@@ -65,7 +66,7 @@ public class CharacterStats : CharacterCombat
                 weaponInstanceBelt[weaponIndex].transform.localPosition = weaponGripPlace.transform.localPosition;
                 _currentWeaponIndex = weaponIndex;
                 _weaponClass = weaponInstanceBelt[_currentWeaponIndex].GetComponent<WeaponBaseClass>().weaponClass;
-                _weaponRange = weaponInstanceBelt[_currentWeaponIndex].GetComponent<WeaponBaseClass>().weaponRange;
+                _weaponRange = weaponInstanceBelt[_currentWeaponIndex].GetComponent<WeaponBaseClass>().weaponRange + attackRangeModifier;
             }
             else
             {
@@ -111,7 +112,7 @@ public class CharacterStats : CharacterCombat
 
             if (!isAttackRangeFound)
             {
-                _weaponRange = weaponInstanceBelt[_currentWeaponIndex].GetComponent<WeaponBaseClass>().weaponRange;
+                _weaponRange = weaponInstanceBelt[_currentWeaponIndex].GetComponent<WeaponBaseClass>().weaponRange + attackRangeModifier;
                 GridManager.instance.CalculateAttackPath(this.gameObject);
                 ScanForEnemies();
             }
