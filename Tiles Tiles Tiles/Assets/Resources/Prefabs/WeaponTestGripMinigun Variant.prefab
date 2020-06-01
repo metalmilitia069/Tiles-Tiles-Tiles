@@ -77,5 +77,20 @@ PrefabInstance:
       propertyPath: weaponClass
       value: 3
       objectReference: {fileID: 0}
+    - target: {fileID: 9121297324988936524, guid: 028a26a91b4fff54081a1f78baedcf98,
+        type: 3}
+      propertyPath: minDamage
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 9121297324988936524, guid: 028a26a91b4fff54081a1f78baedcf98,
+        type: 3}
+      propertyPath: criticalChance
+      value: 0.3
+      objectReference: {fileID: 0}
+    - target: {fileID: 9121297324988936524, guid: 028a26a91b4fff54081a1f78baedcf98,
+        type: 3}
+      propertyPath: damagePenalty
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 028a26a91b4fff54081a1f78baedcf98, type: 3}

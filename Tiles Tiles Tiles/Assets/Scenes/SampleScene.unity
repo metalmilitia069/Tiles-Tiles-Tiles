@@ -421,11 +421,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: WeaponTestGripGun Variant
       objectReference: {fileID: 0}
-    - target: {fileID: 1043748974132197211, guid: a81465ba108767f4fb00452d13bf66d4,
-        type: 3}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 5424354678661050245, guid: a81465ba108767f4fb00452d13bf66d4,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -1917,6 +1912,21 @@ MonoBehaviour:
   - {fileID: 1380615927}
   - {fileID: 1474244561}
   weaponBeltSize: 4
+  _damageModifier: 0
+  _criticalChanceModifier: 0
+  _attackRangeModifier: 0
+  _criticalDamageModifier: 0
+  _elementalDmgFire: 0
+  _elementalDmgElectricity: 0
+  _elementalDmgCold: 0
+  _elementalDmgPoison: 0
+  _armorNormal: 0
+  _armorBlindage: 0
+  _dodgeChance: 0
+  _elementalDefFire: 0
+  _elementalDefElectricity: 0
+  _elementalDefCold: 0
+  _elementalDefPoison: 0
 --- !u!136 &1224280841
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -3557,11 +3567,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: WeaponTestGripMinigun Variant
       objectReference: {fileID: 0}
-    - target: {fileID: 4595707206110553643, guid: f38e673b92cde0f4d973830d1ce8e880,
-        type: 3}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 8862013849389121269, guid: f38e673b92cde0f4d973830d1ce8e880,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -3699,11 +3704,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: WeaponTestGripRifle
-      objectReference: {fileID: 0}
-    - target: {fileID: 1400204266825342938, guid: 4ceced8bf4fd8664ea04a0532d3cd133,
-        type: 3}
-      propertyPath: m_IsActive
-      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6221036390417581828, guid: 4ceced8bf4fd8664ea04a0532d3cd133,
         type: 3}

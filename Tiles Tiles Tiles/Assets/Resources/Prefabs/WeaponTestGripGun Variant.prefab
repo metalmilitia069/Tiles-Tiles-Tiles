@@ -11,6 +11,22 @@ PrefabInstance:
       propertyPath: isCurrent
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 1846141360, guid: a9b0d5cef0240644e9bc5b42177136af, type: 3}
+      propertyPath: weaponCriticalDamage
+      value: 1.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 1846141360, guid: a9b0d5cef0240644e9bc5b42177136af, type: 3}
+      propertyPath: criticalChance
+      value: 0.3
+      objectReference: {fileID: 0}
+    - target: {fileID: 1846141360, guid: a9b0d5cef0240644e9bc5b42177136af, type: 3}
+      propertyPath: weapoonCriticalChance
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 1846141360, guid: a9b0d5cef0240644e9bc5b42177136af, type: 3}
+      propertyPath: weaponCriticalChance
+      value: 0.5
+      objectReference: {fileID: 0}
     - target: {fileID: 520298709947544915, guid: a9b0d5cef0240644e9bc5b42177136af,
         type: 3}
       propertyPath: m_Materials.Array.data[0]

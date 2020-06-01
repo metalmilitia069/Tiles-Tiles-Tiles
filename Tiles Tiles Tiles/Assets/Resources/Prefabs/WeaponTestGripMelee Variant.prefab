@@ -77,6 +77,21 @@ PrefabInstance:
       propertyPath: isCurrent
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6367425882643660247, guid: a81465ba108767f4fb00452d13bf66d4,
+        type: 3}
+      propertyPath: minDamage
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 6367425882643660247, guid: a81465ba108767f4fb00452d13bf66d4,
+        type: 3}
+      propertyPath: criticalChance
+      value: 0.3
+      objectReference: {fileID: 0}
+    - target: {fileID: 6367425882643660247, guid: a81465ba108767f4fb00452d13bf66d4,
+        type: 3}
+      propertyPath: damagePenalty
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 6874143335055354164, guid: a81465ba108767f4fb00452d13bf66d4,
         type: 3}
       propertyPath: m_Materials.Array.data[0]

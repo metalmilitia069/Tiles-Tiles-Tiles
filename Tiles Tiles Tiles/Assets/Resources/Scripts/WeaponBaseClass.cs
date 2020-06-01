@@ -27,17 +27,19 @@ public class WeaponBaseClass : MonoBehaviour
     public int optimalRange;//ok
     public int minDamage;//ok
     public int maxDamage;//ok
-    public int calculatedBaseDamage;//
-    public int expectedDamage;//
-    public int calculatedDamage;//
+    public int calculatedBaseDamage;//->    
     public float distanceFromTarget;//ok
     
 
-    public float criticalChance;//
-    public float successShotProbability = 1;//
-    public float damagePenalty;
-    public float shotProbabilityPenalty;
-    public float weaponCriticalDamage;//
+    public float weaponCriticalChance;//->
+    public float successShotProbability = 1;//->
+    public float damagePenalty = 1.0f;//ok
+    //public float shotProbabilityPenalty;
+    public float weaponCriticalDamage;//->
+
+    //[Header("COVER DAMAGE REDUCTION")]
+    private bool isFullCover = false;
+    private bool isHalfCover = false;
 
     //Weapon Stats Bullet Behavior
     [Header("WEAPON BEHAVIOR")]
@@ -89,22 +91,33 @@ public class WeaponBaseClass : MonoBehaviour
         Debug.DrawRay(weaponFirePoint.transform.position, transform.forward * 100, Color.red, 2);//enemy.transform.position, Color.red, 1);//Input.mousePosition, Color.red, 1);
         
         RaycastHit[] hits;
-        hits = Physics.RaycastAll(ray, Mathf.Infinity);
+        hits = Physics.RaycastAll(ray, Mathf.Infinity);//enemy.transform.position.magnitude);
+        
+        bool isCoverComputed = false;
+
+
+        ////Reset Odds
+        //successShotProbability = 1;
+        //damagePenalty = 1.0f;
 
         foreach (var hit in hits)
         {
             TileModifier cover = hit.collider.GetComponent<TileModifier>();
             if (cover && cover.isCover)
             {
-                if (cover.isHalfCover)
+                if (cover.isHalfCover && !isCoverComputed)
                 {
                     Debug.Log("Hit HALF Cover");
                     successShotProbability -= cover.halfCoverPenalty;
+                    isHalfCover = true;
+                    isCoverComputed = true;
                 }
-                else if (cover.isFullCover)
+                else if (cover.isFullCover && !isCoverComputed)
                 {
                     Debug.Log("Hit FULL Cover");
                     successShotProbability -= cover.fullCoverPenalty;
+                    isFullCover = true;
+                    isCoverComputed = true;
                 }
             }
             EnemyBaseClass enemyclass = hit.collider.GetComponent<EnemyBaseClass>();
@@ -115,11 +128,11 @@ public class WeaponBaseClass : MonoBehaviour
                 Debug.Log("Distance From The Target: " + distanceFromTarget);
                 if (optimalRange +1 >= distanceFromTarget && optimalRange -1 <= distanceFromTarget)//
                 {
-                    damagePenalty = 1f;
+                    damagePenalty -= 0f;
                 }
                 else
                 {
-                    damagePenalty = 0.8f;
+                    damagePenalty -= 0.2f;
                 }
                 CalculateBaseDamage();
             }
@@ -133,8 +146,31 @@ public class WeaponBaseClass : MonoBehaviour
         Debug.Log("calculated Base Damage = " + calculatedBaseDamage);
 
         calculatedBaseDamage = (int)(calculatedBaseDamage * damagePenalty);
-        Debug.Log("calculated Base Damage = " + calculatedBaseDamage);
+        Debug.Log("calculated Base Damage * Penalty = " + calculatedBaseDamage);
+
+        if (isHalfCover)
+        {
+            calculatedBaseDamage = (int)(calculatedBaseDamage * 0.80f);
+            isHalfCover = false;
+        }
+        else if (isFullCover)
+        {
+            calculatedBaseDamage = (int)(calculatedBaseDamage * 0.50f);
+            isFullCover = false;
+        }
 
 
+        Debug.Log("calculated Base Damage * Penalty * CoverAbsortion = " + calculatedBaseDamage);
+
+        Debug.Log("Shot Success Chance = " + successShotProbability * 100 + "%");
+
+        Debug.Log("Shot Critical Chance = " + weaponCriticalChance * 100 + "%");
+
+        Debug.Log("Shot Critical Damage Rate = " + weaponCriticalDamage * 100 + "%");
+
+
+        //Reset Odds
+        successShotProbability = 1;
+        damagePenalty = 1.0f;
     }
 }

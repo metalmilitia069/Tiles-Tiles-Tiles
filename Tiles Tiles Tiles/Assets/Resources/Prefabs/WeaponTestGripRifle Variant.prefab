@@ -17,6 +17,26 @@ PrefabInstance:
       propertyPath: weaponClass
       value: 2
       objectReference: {fileID: 0}
+    - target: {fileID: 7630992678517583015, guid: f38e673b92cde0f4d973830d1ce8e880,
+        type: 3}
+      propertyPath: minDamage
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 7630992678517583015, guid: f38e673b92cde0f4d973830d1ce8e880,
+        type: 3}
+      propertyPath: maxDamage
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 7630992678517583015, guid: f38e673b92cde0f4d973830d1ce8e880,
+        type: 3}
+      propertyPath: criticalChance
+      value: 0.3
+      objectReference: {fileID: 0}
+    - target: {fileID: 7630992678517583015, guid: f38e673b92cde0f4d973830d1ce8e880,
+        type: 3}
+      propertyPath: damagePenalty
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 7989037755993176132, guid: f38e673b92cde0f4d973830d1ce8e880,
         type: 3}
       propertyPath: m_Materials.Array.data[0]

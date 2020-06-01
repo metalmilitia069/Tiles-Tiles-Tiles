@@ -16,6 +16,7 @@ public class TileModifier : MonoBehaviour
     public float halfCoverPenalty = 0.20f;
     [SerializeField]
     public float fullCoverPenalty = 0.90f;
+    
 
     [SerializeField]
     private float _latterHeight = 5;
