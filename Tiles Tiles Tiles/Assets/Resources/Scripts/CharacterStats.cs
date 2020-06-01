@@ -8,13 +8,13 @@ public class CharacterStats : CharacterCombat
     //Attack Stats
     [Header("ATTACK STATS")]
     [SerializeField]
-    private int _damageModifier = 0;
+    public int damageModifier = 0;
     [SerializeField]
-    private float _criticalChanceModifier = 0.0f;
+    public float criticalChanceModifier = 0.0f;
     [SerializeField]
-    private int _attackRangeModifier = 0;
+    public int attackRangeModifier = 0;
     [SerializeField]
-    private float _criticalDamageModifier = 0;
+    public float criticalDamageModifier = 0;
 
     //TODO: Elemental Attack
     [Header("ELEMENTAL ATTACK STATS")]

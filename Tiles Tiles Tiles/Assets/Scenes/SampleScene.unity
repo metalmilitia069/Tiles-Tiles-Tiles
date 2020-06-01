@@ -379,6 +379,21 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   canBeAttacked: 0
+  _damageModifier: 0
+  _criticalChanceModifier: 0
+  _attackRangeModifier: 0
+  _criticalDamageModifier: 0
+  _elementalDmgFire: 0
+  _elementalDmgElectricity: 0
+  _elementalDmgCold: 0
+  _elementalDmgPoison: 0
+  _armorNormal: 0
+  _armorBlindage: 0
+  _dodgeChance: 0
+  _elementalDefFire: 0
+  _elementalDefElectricity: 0
+  _elementalDefCold: 0
+  _elementalDefPoison: 0
 --- !u!1 &136337454
 GameObject:
   m_ObjectHideFlags: 0
@@ -1734,6 +1749,61 @@ MonoBehaviour:
   _isLeftDirection: 0
   _position: {x: 0, y: 0, z: 0}
   _isRayUp: 0
+--- !u!1 &1161761889
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1161761891}
+  - component: {fileID: 1161761890}
+  m_Layer: 0
+  m_Name: CombatCalculatorManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1161761890
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1161761889}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 999f895e3bde3fe4eac10dd31ef879b0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _weaponCalculatedBaseDamage: 0
+  _weaponSuccessShotProbability: 0
+  _weaponCriticalChance: 0
+  _weaponCriticalDamage: 0
+  _playerDamageModifier: 0
+  _playerCriticalChanceModifier: 0
+  _playerAttackRangeModifier: 0
+  _playerCriticalDamageModifier: 0
+  _elementalDmgFire: 0
+  _elementalDmgElectricity: 0
+  _elementalDmgCold: 0
+  _elementalDmgPoison: 0
+--- !u!4 &1161761891
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1161761889}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 20
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1196149815
 GameObject:
   m_ObjectHideFlags: 0
@@ -1912,10 +1982,10 @@ MonoBehaviour:
   - {fileID: 1380615927}
   - {fileID: 1474244561}
   weaponBeltSize: 4
-  _damageModifier: 0
-  _criticalChanceModifier: 0
-  _attackRangeModifier: 0
-  _criticalDamageModifier: 0
+  damageModifier: 0
+  criticalChanceModifier: 0
+  attackRangeModifier: 0
+  criticalDamageModifier: 0
   _elementalDmgFire: 0
   _elementalDmgElectricity: 0
   _elementalDmgCold: 0
