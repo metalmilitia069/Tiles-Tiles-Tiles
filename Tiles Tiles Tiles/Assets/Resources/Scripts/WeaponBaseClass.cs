@@ -23,14 +23,14 @@ public class WeaponBaseClass : MonoBehaviour
 
     //Weapon Stats Calculations
     [Header("WEAPON STATS")]
-    public int weaponRange;
-    public int optimalRange;
-    public int minDamage;
-    public int maxDamage;
+    public int weaponRange;//ok
+    public int optimalRange;//ok
+    public int minDamage;//ok
+    public int maxDamage;//ok
     public int calculatedBaseDamage;//
     public int expectedDamage;//
     public int calculatedDamage;//
-    public float distanceFromTarget;
+    public float distanceFromTarget;//ok
     
 
     public float criticalChance;//
@@ -113,6 +113,14 @@ public class WeaponBaseClass : MonoBehaviour
                 Debug.Log("Hit Enemy!!!");
                 distanceFromTarget = Vector3.Distance(character.transform.position, enemy.transform.position);
                 Debug.Log("Distance From The Target: " + distanceFromTarget);
+                if (optimalRange +1 >= distanceFromTarget && optimalRange -1 <= distanceFromTarget)//
+                {
+                    damagePenalty = 1f;
+                }
+                else
+                {
+                    damagePenalty = 0.8f;
+                }
                 CalculateBaseDamage();
             }
         }
@@ -120,7 +128,13 @@ public class WeaponBaseClass : MonoBehaviour
 
     public void CalculateBaseDamage()
     {
+        Debug.Log("damage penalty = " + damagePenalty);
         calculatedBaseDamage = Random.Range(minDamage, maxDamage + 1);
         Debug.Log("calculated Base Damage = " + calculatedBaseDamage);
+
+        calculatedBaseDamage = (int)(calculatedBaseDamage * damagePenalty);
+        Debug.Log("calculated Base Damage = " + calculatedBaseDamage);
+
+
     }
 }
