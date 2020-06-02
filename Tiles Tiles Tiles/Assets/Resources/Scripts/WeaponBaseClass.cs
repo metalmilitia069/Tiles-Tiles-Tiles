@@ -92,7 +92,7 @@ public class WeaponBaseClass : MonoBehaviour
         RaycastHit[] hits;
         hits = Physics.RaycastAll(ray, Vector3.Distance(this.transform.position, enemy.transform.position));//Mathf.Infinity);//enemy.transform.position.magnitude);
         
-        //bool isCoverComputed = false;
+        
 
 
         ////Reset Odds
@@ -104,19 +104,17 @@ public class WeaponBaseClass : MonoBehaviour
             TileModifier cover = hit.collider.GetComponent<TileModifier>();
             if (cover && cover.isCover)
             {
-                if (cover.isHalfCover )//&& !isCoverComputed)
+                if (cover.isHalfCover )
                 {
                     //Debug.Log("Hit HALF Cover");
                     successShotProbability -= cover.halfCoverPenalty;
-                    isHalfCover = true;
-                    //isCoverComputed = true;
+                    isHalfCover = true;                    
                 }
                 else if (cover.isFullCover )//&& !isCoverComputed)
                 {
                     //Debug.Log("Hit FULL Cover");
                     successShotProbability -= cover.fullCoverPenalty;
-                    isFullCover = true;
-                    //isCoverComputed = true;
+                    isFullCover = true;                    
                 }
             }
             EnemyBaseClass enemyclass = hit.collider.GetComponent<EnemyBaseClass>();
@@ -147,13 +145,14 @@ public class WeaponBaseClass : MonoBehaviour
         //Debug.Log("calculated Base Damage = " + calculatedBaseDamage);
 
         calculatedBaseDamage = (int)(calculatedBaseDamage * damagePenalty);
-        //Debug.Log("calculated Base Damage * Penalty = " + calculatedBaseDamage);
+        //Debug.Log("calculated Base Damage * Range Penalty = " + calculatedBaseDamage);
 
         if (isHalfCover)
         {
             calculatedBaseDamage = (int)(calculatedBaseDamage * 0.80f);
             isHalfCover = false;
             //Debug.Log("isHalfCover");
+
         }
         else if (isFullCover)
         {
@@ -161,12 +160,13 @@ public class WeaponBaseClass : MonoBehaviour
             isFullCover = false;
             //Debug.Log("isFullCover");
         }
+        //Debug.Log("calculated Base Damage * Penalty * CoverAbsortion = " + calculatedBaseDamage);
 
+        
         CombatCalculatorManager.instance.GatherWeaponAttackStats(this);
 
 
-        //Debug.Log("calculated Base Damage * Penalty * CoverAbsortion = " + calculatedBaseDamage);
-        
+
         //Debug.Log("Shot Success Chance = " + successShotProbability * 100 + "%");
 
         //Debug.Log("Shot Critical Chance = " + weaponCriticalChance * 100 + "%");

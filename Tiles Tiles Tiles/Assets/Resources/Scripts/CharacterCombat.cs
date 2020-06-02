@@ -26,87 +26,12 @@ public class CharacterCombat : CharacterMove
 
     // Start is called before the first frame update
     void Start()
-    {
-        //weaponInstanceBelt = new GameObject[weaponPrefabBelt.Length];
-        
-
-        //int weaponIndex = 0;
-
-        //foreach (var weapon in weaponPrefabBelt)
-        //{
-        //    weaponInstanceBelt[weaponIndex] = Instantiate(weapon, this.transform);
-        //    if (weaponInstanceBelt[weaponIndex].GetComponent<WeaponBaseClass>().isCurrent)
-        //    {
-        //        weaponInstanceBelt[weaponIndex].transform.localPosition = weaponGripPlace.transform.localPosition;
-        //        _currentWeaponIndex = weaponIndex;
-        //        _weaponClass = weaponInstanceBelt[_currentWeaponIndex].GetComponent<WeaponBaseClass>().weaponClass;
-        //        _weaponRange = weaponInstanceBelt[_currentWeaponIndex].GetComponent<WeaponBaseClass>().weaponRange;
-        //    }
-        //    else
-        //    {                
-        //        weaponInstanceBelt[weaponIndex].transform.localPosition = weaponHolsters[weaponIndex].transform.localPosition;
-        //    }
-        //        weaponIndex++;
-        //}
+    {        
     }
 
     // Update is called once per frame
     void Update()
-    {
-        //if (_isMoveMode)
-        //{
-        //    //_isCombatMode = false;
-        //    if (_listOfScannedEnemies.Count > 0)
-        //    {
-        //        foreach (var enemy in _listOfScannedEnemies)
-        //        {
-        //            enemy.canBeAttacked = false;
-        //        }
-        //    }
-
-        //    _listOfScannedEnemies.Clear();
-
-        //    if (!isMoving)
-        //    {
-        //        ActivateMouseToMovement();
-        //    }
-        //    else
-        //    {
-        //        Move();
-        //    }
-
-        //    if (!isTilesFound)
-        //    {
-        //        GridManager.instance.CalculateAvailablePath(this.gameObject);
-        //    }           
-        //}
-        
-        //if (_isCombatMode)
-        //{
-            
-        //    if (!isAttackRangeFound)
-        //    {
-        //        _weaponRange = weaponInstanceBelt[_currentWeaponIndex].GetComponent<WeaponBaseClass>().weaponRange;
-        //        GridManager.instance.CalculateAttackPath(this.gameObject);
-        //        ScanForEnemies();
-        //    }
-
-        //    ActivateMouseToAttack();
-
-        //}
-        
-        //if(Input.GetKeyDown(KeyCode.H))
-        //{
-        //    ChangeMode();            
-        //}
-
-        //if (Input.GetKeyDown(KeyCode.F))
-        //{
-        //    if (_isCombatMode)
-        //    {
-        //        ChangeWeapon();
-        //    }
-        //}
+    {        
     }
 
     public void ChangeMode()
@@ -221,10 +146,6 @@ public class CharacterCombat : CharacterMove
     public void Attack(EnemyBaseClass enemy)
     {       
         //Debug.Log("The Enemy " + enemy.name + " is Being Attacked By " + this.gameObject.name + " Using " + _weaponClass);
-
-
-
-        
         transform.LookAt(enemy.transform);        
         weaponInstanceBelt[_currentWeaponIndex].GetComponent<WeaponBaseClass>().GatherWeaponAttackStats((CharacterStats)this, enemy);
         CombatCalculatorManager.instance.GatherEnemyDefenseStats(enemy);
@@ -239,7 +160,7 @@ public class CharacterCombat : CharacterMove
         weaponInstanceBelt[_currentWeaponIndex].GetComponent<WeaponBaseClass>().GatherWeaponAttackStats((CharacterStats)this, enemy);
         CombatCalculatorManager.instance.GatherEnemyDefenseStats(enemy);
         CombatCalculatorManager.instance.GatherPlayerAttackStats((CharacterStats)this);
-        CombatCalculatorManager.instance.DisplayShotChance();
+        CombatCalculatorManager.instance.DisplayShotChance();//(weaponInstanceBelt[_currentWeaponIndex].GetComponent<WeaponBaseClass>());
         enemy.ShowProbability();
     }
 }

@@ -82,8 +82,7 @@ public class CharacterStats : CharacterCombat
     void Update()
     {
         if (_isMoveMode)
-        {
-            //_isCombatMode = false;
+        {            
             if (_listOfScannedEnemies.Count > 0)
             {
                 foreach (var enemy in _listOfScannedEnemies)

@@ -63,6 +63,8 @@ public class CombatCalculatorManager : MonoBehaviour
     private int _finalDamage;
     [SerializeField]
     private float _finalCriticalProbability;
+    [SerializeField]
+    private WeaponBaseClass _cachedWeapon;
 
     #region Singleton
 
@@ -100,6 +102,8 @@ public class CombatCalculatorManager : MonoBehaviour
 
     public void GatherWeaponAttackStats(WeaponBaseClass weaponRef)
     {
+        _cachedWeapon = weaponRef;
+
         _weaponCalculatedBaseDamage = weaponRef.calculatedBaseDamage;//
         _weaponSuccessShotProbability = weaponRef.successShotProbability;//
         _weaponCriticalChance = weaponRef.weaponCriticalChance;//
@@ -122,21 +126,20 @@ public class CombatCalculatorManager : MonoBehaviour
 
     public void PlayerFinalAttackCalculation(EnemyBaseClass enemy)
     {
-                                                    //.9             -      .1 = 0.80
         float finalAttackProbability = _weaponSuccessShotProbability - _enemyDodgeChance;
         float diceRoll = Random.Range(0.0f, 1.0f);
         bool success = (diceRoll <= finalAttackProbability);
         if (success)
         {
             int finalDamage = _weaponCalculatedBaseDamage + _playerDamageModifier - _enemyArmorNormal - _enemyArmorBlindage;
+            _finalDamage = finalDamage;
             float finalCriticalProbability = _weaponCriticalChance + _playerCriticalChanceModifier;
             _finalCriticalProbability = finalCriticalProbability;
             float diceRoll02 = Random.Range(0.0f, 1.0f);
             bool success02 = (diceRoll02 <= finalCriticalProbability);
 
             if (success02)
-            {
-                                    //4    *               1.5            +    0.3  =   4 * 1.8 = 7.2
+            {                 
                 finalDamage = (finalDamage * ((int)(_weaponCriticalDamage + _playerCriticalDamageModifier)));
                 _finalDamage = finalDamage;
                 Debug.Log("Critical Shot Success!!!");
@@ -157,7 +160,9 @@ public class CombatCalculatorManager : MonoBehaviour
     public string DisplayShotChance()
     {
         float finalAttackProbability = _weaponSuccessShotProbability - _enemyDodgeChance;
-        string probabilityText = ("Shot Success Chance = " + finalAttackProbability * 100 + "%");
+        int weaponDamageMedian = (int)((_cachedWeapon.maxDamage + _cachedWeapon.minDamage) / 2);
+        int finalDamage = weaponDamageMedian + _playerDamageModifier - _enemyArmorNormal - _enemyArmorBlindage;
+        string probabilityText = ("Shot Success Chance = " + finalAttackProbability * 100 + "%  || Damage Preview = " + finalDamage);
         return probabilityText;
     }
 

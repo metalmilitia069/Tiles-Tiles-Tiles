@@ -13,20 +13,7 @@ public class CharacterMove : CharacterBaseClass
 
     // Update is called once per frame
     private void Update()
-    {
-        //if (!isMoving)
-        //{
-        //    ActivateMouse();            
-        //}
-        //else
-        //{
-        //    Move();
-        //}
-
-        //if (!isTilesFound)
-        //{
-        //    GridManager.instance.CalculateAvailablePath(this.gameObject);            
-        //}        
+    {             
     }
 
     protected void ActivateMouseToMovement()
