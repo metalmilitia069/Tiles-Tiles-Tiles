@@ -106,14 +106,14 @@ public class WeaponBaseClass : MonoBehaviour
             {
                 if (cover.isHalfCover )//&& !isCoverComputed)
                 {
-                    Debug.Log("Hit HALF Cover");
+                    //Debug.Log("Hit HALF Cover");
                     successShotProbability -= cover.halfCoverPenalty;
                     isHalfCover = true;
                     //isCoverComputed = true;
                 }
                 else if (cover.isFullCover )//&& !isCoverComputed)
                 {
-                    Debug.Log("Hit FULL Cover");
+                    //Debug.Log("Hit FULL Cover");
                     successShotProbability -= cover.fullCoverPenalty;
                     isFullCover = true;
                     //isCoverComputed = true;
@@ -122,9 +122,9 @@ public class WeaponBaseClass : MonoBehaviour
             EnemyBaseClass enemyclass = hit.collider.GetComponent<EnemyBaseClass>();
             if (enemyclass)
             {
-                Debug.Log("Hit Enemy!!!");
+                //Debug.Log("Hit Enemy!!!");
                 distanceFromTarget = Vector3.Distance(character.transform.position, enemy.transform.position);
-                Debug.Log("Distance From The Target: " + distanceFromTarget);
+                //Debug.Log("Distance From The Target: " + distanceFromTarget);
                 if (optimalRange +1 >= distanceFromTarget && optimalRange -1 <= distanceFromTarget)//
                 {
                     damagePenalty -= 0f;
@@ -142,12 +142,12 @@ public class WeaponBaseClass : MonoBehaviour
 
     public void CalculateBaseDamage()
     {
-        Debug.Log("damage penalty = " + damagePenalty);
+        //Debug.Log("damage penalty = " + damagePenalty);
         calculatedBaseDamage = Random.Range(minDamage, maxDamage + 1);
-        Debug.Log("calculated Base Damage = " + calculatedBaseDamage);
+        //Debug.Log("calculated Base Damage = " + calculatedBaseDamage);
 
         calculatedBaseDamage = (int)(calculatedBaseDamage * damagePenalty);
-        Debug.Log("calculated Base Damage * Penalty = " + calculatedBaseDamage);
+        //Debug.Log("calculated Base Damage * Penalty = " + calculatedBaseDamage);
 
         if (isHalfCover)
         {

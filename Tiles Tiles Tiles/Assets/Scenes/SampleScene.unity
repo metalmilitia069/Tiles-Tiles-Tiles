@@ -387,13 +387,13 @@ MonoBehaviour:
   _elementalDmgElectricity: 0
   _elementalDmgCold: 0
   _elementalDmgPoison: 0
-  _armorNormal: 0
-  _armorBlindage: 0
-  _dodgeChance: 0
-  _elementalDefFire: 0
-  _elementalDefElectricity: 0
-  _elementalDefCold: 0
-  _elementalDefPoison: 0
+  armorNormal: 0
+  armorBlindage: 0
+  dodgeChance: 0
+  elementalDefFire: 0
+  elementalDefElectricity: 0
+  elementalDefCold: 0
+  elementalDefPoison: 0
 --- !u!1 &136337454
 GameObject:
   m_ObjectHideFlags: 0
@@ -1784,12 +1784,18 @@ MonoBehaviour:
   _weaponCriticalDamage: 0
   _playerDamageModifier: 0
   _playerCriticalChanceModifier: 0
-  _playerAttackRangeModifier: 0
   _playerCriticalDamageModifier: 0
-  _elementalDmgFire: 0
-  _elementalDmgElectricity: 0
-  _elementalDmgCold: 0
-  _elementalDmgPoison: 0
+  _playerElementalDmgFire: 0
+  _playerElementalDmgElectricity: 0
+  _playerElementalDmgCold: 0
+  _playerElementalDmgPoison: 0
+  _enemyArmorNormal: 0
+  _enemyArmorBlindage: 0
+  _enemyDodgeChance: 0
+  _enemyElementalDefFire: 0
+  _enemyElementalDefElectricity: 0
+  _enemyElementalDefCold: 0
+  _enemyElementalDefPoison: 0
 --- !u!4 &1161761891
 Transform:
   m_ObjectHideFlags: 0
@@ -1982,10 +1988,10 @@ MonoBehaviour:
   - {fileID: 1380615927}
   - {fileID: 1474244561}
   weaponBeltSize: 4
-  damageModifier: 0
-  criticalChanceModifier: 0
+  damageModifier: 2
+  criticalChanceModifier: 0.2
   attackRangeModifier: 0
-  criticalDamageModifier: 0
+  criticalDamageModifier: 0.3
   _elementalDmgFire: 0
   _elementalDmgElectricity: 0
   _elementalDmgCold: 0
