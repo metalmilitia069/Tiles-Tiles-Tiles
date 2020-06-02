@@ -35,6 +35,8 @@ public class CharacterStats : CharacterCombat
     private int _armorBlindage = 0;
     [SerializeField]
     private float _dodgeChance = 0.0f;
+    [SerializeField]
+    public int health = 0;
 
     //TODO: Elemental Defense
     [Header("ELEMENTAL DEFENSE STATS")]

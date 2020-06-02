@@ -37,6 +37,8 @@ public class EnemyBaseClass : MonoBehaviour
     public int armorBlindage = 0;
     [SerializeField]
     public float dodgeChance = 0.0f;
+    [SerializeField]
+    public int health = 0;
 
     //TODO: Elemental Defense
     [Header("ELEMENTAL DEFENSE STATS")]
@@ -61,12 +63,17 @@ public class EnemyBaseClass : MonoBehaviour
         
     }
 
-    private void OnMouseOver()
+    //private void OnMouseOver()
+    //{
+    //    if (canBeAttacked)
+    //    {
+    //        Debug.Log("Mouse over Enemy!!");
+    //    }
+    //}
+
+    public void ShowProbability()
     {
-        if (canBeAttacked)
-        {
-            Debug.Log("Mouse over Enemy!!");
-        }
+        Debug.Log(CombatCalculatorManager.instance.DisplayShotChance());
     }
 
 

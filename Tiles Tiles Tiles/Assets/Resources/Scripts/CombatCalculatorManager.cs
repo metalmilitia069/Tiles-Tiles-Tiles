@@ -58,7 +58,11 @@ public class CombatCalculatorManager : MonoBehaviour
     [SerializeField]
     private int _enemyElementalDefPoison;
 
-
+    [Header("MANAGER CALCULATED VARIABLES")]
+    [SerializeField]
+    private int _finalDamage;
+    [SerializeField]
+    private float _finalCriticalProbability;
 
     #region Singleton
 
@@ -96,28 +100,72 @@ public class CombatCalculatorManager : MonoBehaviour
 
     public void GatherWeaponAttackStats(WeaponBaseClass weaponRef)
     {
-        _weaponCalculatedBaseDamage = weaponRef.calculatedBaseDamage;
-        _weaponSuccessShotProbability = weaponRef.successShotProbability;
-        _weaponCriticalChance = weaponRef.weaponCriticalChance;
-        _weaponCriticalDamage = weaponRef.weaponCriticalDamage;
+        _weaponCalculatedBaseDamage = weaponRef.calculatedBaseDamage;//
+        _weaponSuccessShotProbability = weaponRef.successShotProbability;//
+        _weaponCriticalChance = weaponRef.weaponCriticalChance;//
+        _weaponCriticalDamage = weaponRef.weaponCriticalDamage;//
     }
 
     public void GatherEnemyDefenseStats(EnemyBaseClass enemyRef)
     {
-        _enemyArmorNormal = enemyRef.armorNormal;
-        _enemyArmorBlindage = enemyRef.armorBlindage;
-        _enemyDodgeChance = enemyRef.dodgeChance;
+        _enemyArmorNormal = enemyRef.armorNormal;//
+        _enemyArmorBlindage = enemyRef.armorBlindage;//
+        _enemyDodgeChance = enemyRef.dodgeChance;//
     }
 
     public void GatherPlayerAttackStats(CharacterStats characterRef)
     {
-        _playerDamageModifier = characterRef.damageModifier;    
-        _playerCriticalChanceModifier = characterRef.criticalChanceModifier;        
-        _playerCriticalDamageModifier = characterRef.criticalDamageModifier;
+        _playerDamageModifier = characterRef.damageModifier;//   
+        _playerCriticalChanceModifier = characterRef.criticalChanceModifier;//        
+        _playerCriticalDamageModifier = characterRef.criticalDamageModifier;//
     }
 
-    public void FinalAttackCalculation()
+    public void PlayerFinalAttackCalculation(EnemyBaseClass enemy)
     {
+                                                    //.9             -      .1 = 0.80
+        float finalAttackProbability = _weaponSuccessShotProbability - _enemyDodgeChance;
+        float diceRoll = Random.Range(0.0f, 1.0f);
+        bool success = (diceRoll <= finalAttackProbability);
+        if (success)
+        {
+            int finalDamage = _weaponCalculatedBaseDamage + _playerDamageModifier - _enemyArmorNormal - _enemyArmorBlindage;
+            float finalCriticalProbability = _weaponCriticalChance + _playerCriticalChanceModifier;
+            _finalCriticalProbability = finalCriticalProbability;
+            float diceRoll02 = Random.Range(0.0f, 1.0f);
+            bool success02 = (diceRoll02 <= finalCriticalProbability);
 
+            if (success02)
+            {
+                                    //4    *               1.5            +    0.3  =   4 * 1.8 = 7.2
+                finalDamage = (finalDamage * ((int)(_weaponCriticalDamage + _playerCriticalDamageModifier)));
+                _finalDamage = finalDamage;
+                Debug.Log("Critical Shot Success!!!");
+            }
+        }
+        else
+        {
+            Debug.Log("Shot MISSED!!!");
+            _finalDamage = 0;
+        }
+
+        Debug.Log("Calculated Critical Chance = " + _finalCriticalProbability);
+        Debug.Log("FINAL DAMAGE ON ENEMY = " + _finalDamage);
+
+        ResetCalculaterVariables();
     }
+
+    public string DisplayShotChance()
+    {
+        float finalAttackProbability = _weaponSuccessShotProbability - _enemyDodgeChance;
+        string probabilityText = ("Shot Success Chance = " + finalAttackProbability * 100 + "%");
+        return probabilityText;
+    }
+
+    public void ResetCalculaterVariables()
+    {
+        _finalDamage = default;
+        _finalCriticalProbability = default;
+    }
+
+
 }

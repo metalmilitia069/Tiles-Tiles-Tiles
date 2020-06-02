@@ -189,8 +189,8 @@ public class CharacterCombat : CharacterMove
 
     public void ActivateMouseToAttack()
     {
-        if(Input.GetMouseButtonDown(0))
-        {
+        //if(Input.GetMouseButtonDown(0))
+        //{
             Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
             RaycastHit hit;
 
@@ -203,12 +203,19 @@ public class CharacterCombat : CharacterMove
                     {
                         if (enemy == enemyPlaceHolder)
                         {
-                            Attack(enemy);
+                            if (Input.GetMouseButtonDown(0))
+                            {
+                                Attack(enemy);
+                            }
+                            else
+                            {
+                                ShowProbability(enemy);
+                            }
                         }
                     }
                 }
             }
-        }
+        //}
     }
 
     public void Attack(EnemyBaseClass enemy)
@@ -222,7 +229,17 @@ public class CharacterCombat : CharacterMove
         weaponInstanceBelt[_currentWeaponIndex].GetComponent<WeaponBaseClass>().GatherWeaponAttackStats((CharacterStats)this, enemy);
         CombatCalculatorManager.instance.GatherEnemyDefenseStats(enemy);
         CombatCalculatorManager.instance.GatherPlayerAttackStats((CharacterStats)this);
-        CombatCalculatorManager.instance.FinalAttackCalculation();
+        CombatCalculatorManager.instance.PlayerFinalAttackCalculation(enemy);
 
+    }
+
+    public void ShowProbability(EnemyBaseClass enemy)
+    {
+        transform.LookAt(enemy.transform);
+        weaponInstanceBelt[_currentWeaponIndex].GetComponent<WeaponBaseClass>().GatherWeaponAttackStats((CharacterStats)this, enemy);
+        CombatCalculatorManager.instance.GatherEnemyDefenseStats(enemy);
+        CombatCalculatorManager.instance.GatherPlayerAttackStats((CharacterStats)this);
+        CombatCalculatorManager.instance.DisplayShotChance();
+        enemy.ShowProbability();
     }
 }
