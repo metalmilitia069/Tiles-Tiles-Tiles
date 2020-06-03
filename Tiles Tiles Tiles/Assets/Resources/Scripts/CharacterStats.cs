@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class CharacterStats : CharacterCombat
+public class CharacterStats : CharacterCombat/*, IPlayerTeam*/
 {
     //Character Stats
     //Attack Stats
@@ -50,10 +50,17 @@ public class CharacterStats : CharacterCombat
     private int _elementalDefPoison = 0;
 
 
+    //Other Variables
+    [Header("OTHER VARIABLES")]
+    public bool isTurnActive = false;
+
+
 
     // Start is called before the first frame update
     void Start()
     {
+        AddPlayerToTeamList();
+
         weaponInstanceBelt = new GameObject[weaponPrefabBelt.Length];
 
 
@@ -81,58 +88,66 @@ public class CharacterStats : CharacterCombat
     // Update is called once per frame
     void Update()
     {
-        if (_isMoveMode)
-        {            
-            if (_listOfScannedEnemies.Count > 0)
+        if (isTurnActive)
+        {
+            if (_isMoveMode)
             {
-                foreach (var enemy in _listOfScannedEnemies)
+                if (_listOfScannedEnemies.Count > 0)
                 {
-                    enemy.canBeAttacked = false;
+                    foreach (var enemy in _listOfScannedEnemies)
+                    {
+                        enemy.canBeAttacked = false;
+                    }
+                }
+
+                _listOfScannedEnemies.Clear();
+
+                if (!isMoving)
+                {
+                    ActivateMouseToMovement();
+                }
+                else
+                {
+                    Move();
+                }
+
+                if (!isTilesFound)
+                {
+                    GridManager.instance.CalculateAvailablePath(this.gameObject);
                 }
             }
 
-            _listOfScannedEnemies.Clear();
-
-            if (!isMoving)
-            {
-                ActivateMouseToMovement();
-            }
-            else
-            {
-                Move();
-            }
-
-            if (!isTilesFound)
-            {
-                GridManager.instance.CalculateAvailablePath(this.gameObject);
-            }
-        }
-
-        if (_isCombatMode)
-        {
-
-            if (!isAttackRangeFound)
-            {
-                _weaponRange = weaponInstanceBelt[_currentWeaponIndex].GetComponent<WeaponBaseClass>().weaponRange + attackRangeModifier;
-                GridManager.instance.CalculateAttackPath(this.gameObject);
-                ScanForEnemies();
-            }
-
-            ActivateMouseToAttack();
-
-        }
-
-        if (Input.GetKeyDown(KeyCode.H))
-        {
-            ChangeMode();
-        }
-
-        if (Input.GetKeyDown(KeyCode.F))
-        {
             if (_isCombatMode)
             {
-                ChangeWeapon();
+
+                if (!isAttackRangeFound)
+                {
+                    _weaponRange = weaponInstanceBelt[_currentWeaponIndex].GetComponent<WeaponBaseClass>().weaponRange + attackRangeModifier;
+                    GridManager.instance.CalculateAttackPath(this.gameObject);
+                    ScanForEnemies();
+                }
+
+                ActivateMouseToAttack();
+
+            }
+
+            if (Input.GetKeyDown(KeyCode.H))
+            {
+                ChangeMode();
+            }
+
+            if (Input.GetKeyDown(KeyCode.F))
+            {
+                if (_isCombatMode)
+                {
+                    ChangeWeapon();
+                }
             }
         }
     }
+
+    //public void AddPlayerToTeamList()
+    //{
+    //    TurnManager.instance.playerTeam.Add((IPlayerTeam)this);
+    //}
 }

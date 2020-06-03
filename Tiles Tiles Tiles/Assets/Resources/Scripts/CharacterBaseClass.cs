@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class CharacterBaseClass : MonoBehaviour
+public class CharacterBaseClass : MonoBehaviour, IPlayerTeam
 {
     [SerializeField]
     private List<Tile> selectableTiles = new List<Tile>();
@@ -219,6 +219,12 @@ public class CharacterBaseClass : MonoBehaviour
              _velocity /= 5.0f;
              _velocity.y = 1.5f;
         }        
+    }
+
+    public void AddPlayerToTeamList()
+    {
+        //TurnManager.instance.playerTeam.Add((IPlayerTeam)this);
+        TurnManager.instance.playerTeam.Add((CharacterStats)this);
     }
 
 }
