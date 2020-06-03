@@ -28,8 +28,11 @@ public class TurnManager : MonoBehaviour
     #endregion
 
     [SerializeField]
-    /*public List<IPlayerTeam> playerTeam;*/// = new List<IPlayerTeam>();
+    //public List<IPlayerTeam> playerTeam;// = new List<IPlayerTeam>();
     public List<CharacterStats> playerTeam;
+    
+    [SerializeField]
+    public Queue<int> intqueue;
 
     public bool isPlayerTurn = true; //TODO: change to false after testing
 

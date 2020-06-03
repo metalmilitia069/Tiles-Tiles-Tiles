@@ -76,5 +76,14 @@ public class EnemyBaseClass : MonoBehaviour
         Debug.Log(CombatCalculatorManager.instance.DisplayShotChance());
     }
 
+    public void ApplyDamage(int Damage)
+    {
+        health -= Damage;
+        if (health <= 0)
+        {
+            Debug.Log("ENEMY IS DEAD!!!!");
+        }
+    }
+
 
 }

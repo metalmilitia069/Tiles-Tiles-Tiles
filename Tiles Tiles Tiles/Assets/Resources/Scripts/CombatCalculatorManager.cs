@@ -154,6 +154,8 @@ public class CombatCalculatorManager : MonoBehaviour
         Debug.Log("Calculated Critical Chance = " + _finalCriticalProbability);
         Debug.Log("FINAL DAMAGE ON ENEMY = " + _finalDamage);
 
+        enemy.ApplyDamage(_finalDamage);
+
         ResetCalculaterVariables();
     }
 
