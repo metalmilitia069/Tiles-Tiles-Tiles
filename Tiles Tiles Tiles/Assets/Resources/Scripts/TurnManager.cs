@@ -64,6 +64,19 @@ public class TurnManager : MonoBehaviour
             {
                 SwitchCharacter();
             }
+
+            if (Input.GetKeyDown(KeyCode.Z))
+            {
+                isPlayerTurn = false;
+                Debug.Log("Players Turn is Over!!!");
+                foreach (var character in playerTurnList)
+                {
+                    character.isTurnActive = false;
+                    GridManager.instance.ClearSelectableTiles();
+                }
+                playerTurnList.Clear();
+                isEnemyTurn = true;
+            }
         }
     }
 
@@ -113,5 +126,10 @@ public class TurnManager : MonoBehaviour
                 //}
             }
         }        
+    }
+
+    public void EndTurn()
+    {
+
     }
 }
