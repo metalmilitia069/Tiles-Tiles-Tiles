@@ -63,43 +63,56 @@ public class CharacterBaseClass : MonoBehaviour, IPlayerTeam
 
     public void Move()
     {
-        if(GridManager.instance.stackTilePath.Count > 0)
-        {
-            Tile t = GridManager.instance.stackTilePath.Peek();
-            Vector3 destinationCoordinates = t.transform.position;
+        //if (this.GetComponent<CharacterStats>().actionPoints > 0)
+        //{
 
-            destinationCoordinates.y += halfHeight + t.GetComponent<Collider>().bounds.extents.y;
 
-            if (Vector3.Distance(transform.position, destinationCoordinates) >= 0.05f)
+
+
+
+            if (GridManager.instance.stackTilePath.Count > 0)
             {
-                bool jump = (transform.position.y != destinationCoordinates.y);
-                
-                if (jump)
+                Tile t = GridManager.instance.stackTilePath.Peek();
+                Vector3 destinationCoordinates = t.transform.position;
+
+                destinationCoordinates.y += halfHeight + t.GetComponent<Collider>().bounds.extents.y;
+
+                if (Vector3.Distance(transform.position, destinationCoordinates) >= 0.05f)
                 {
-                    Jump(destinationCoordinates);                    
+                    bool jump = (transform.position.y != destinationCoordinates.y);
+
+                    if (jump)
+                    {
+                        Jump(destinationCoordinates);
+                    }
+                    else
+                    {
+                        SetMovementDirection(destinationCoordinates);
+                        SetRunningVelocity();
+                    }
+                    transform.forward = _movementDirection;
+                    transform.position += _velocity * Time.deltaTime;
                 }
                 else
                 {
-                    SetMovementDirection(destinationCoordinates);
-                    SetRunningVelocity();                    
+                    transform.position = destinationCoordinates;
+                    GridManager.instance.stackTilePath.Pop();
                 }
-                transform.forward = _movementDirection;
-                transform.position += _velocity * Time.deltaTime;
             }
             else
             {
-                transform.position = destinationCoordinates;
-                GridManager.instance.stackTilePath.Pop();
-            }
-        }
-        else
-        {
-            GridManager.instance.ClearSelectableTiles();
-            isMoving = false;
-            isTilesFound = false;
+                GridManager.instance.ClearSelectableTiles();
+                isMoving = false;
+                isTilesFound = false;
 
-            //PUT EVENT TO HIDE TILES
-        }
+                //PUT EVENT TO HIDE TILES
+            }
+        //}
+
+
+        
+
+
     }
 
     private void SetMovementDirection(Vector3 destinationCoordinates)
@@ -224,7 +237,7 @@ public class CharacterBaseClass : MonoBehaviour, IPlayerTeam
     public void AddPlayerToTeamList()
     {
         //TurnManager.instance.playerTeam.Add((IPlayerTeam)this);
-        TurnManager.instance.playerTeam.Add((CharacterStats)this);
+        TurnManager.instance.playerTeamList.Add((CharacterStats)this);
     }
 
 }

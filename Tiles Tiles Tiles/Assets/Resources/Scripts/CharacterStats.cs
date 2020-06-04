@@ -51,8 +51,10 @@ public class CharacterStats : CharacterCombat/*, IPlayerTeam*/
 
 
     //Other Variables
-    [Header("OTHER VARIABLES")]
+    [Header("TURN VARIABLES")]
     public bool isTurnActive = false;
+    
+    public int actionPoints;
 
 
 
@@ -104,17 +106,25 @@ public class CharacterStats : CharacterCombat/*, IPlayerTeam*/
 
                 if (!isMoving)
                 {
-                    ActivateMouseToMovement();
+                    ActivateMouseToMovement();                    
                 }
                 else
                 {
-                    Move();
+                    Move();                    
                 }
 
                 if (!isTilesFound)
                 {
+                    if (this.GetComponent<CharacterStats>().actionPoints <= 0)
+                    {
+                        TurnManager.instance.PlayerCharacterActionDepleted((CharacterStats)this);
+                        return;
+                    }
                     GridManager.instance.CalculateAvailablePath(this.gameObject);
                 }
+
+                
+                
             }
 
             if (_isCombatMode)

@@ -31,6 +31,14 @@ public class CharacterMove : CharacterBaseClass
                 if (tile != null && tile.isSelectable)
                 {
                     GridManager.instance.CalculatePathToDesignatedTile(tile);
+
+
+
+                    this.GetComponent<CharacterStats>().actionPoints--;
+                    //if (this.GetComponent<CharacterStats>().actionPoints <= 0)
+                    //{
+                    //    TurnManager.instance.PlayerCharacterActionDepleted((CharacterStats)this);
+                    //}
                 }
             }
         }

@@ -152,6 +152,15 @@ public class CharacterCombat : CharacterMove
         CombatCalculatorManager.instance.GatherPlayerAttackStats((CharacterStats)this);
         CombatCalculatorManager.instance.PlayerFinalAttackCalculation(enemy);
 
+
+
+
+        this.GetComponent<CharacterStats>().actionPoints--;
+        if (this.GetComponent<CharacterStats>().actionPoints <= 0)
+        {
+            TurnManager.instance.PlayerCharacterActionDepleted((CharacterStats)this);
+        }
+
     }
 
     public void ShowProbability(EnemyBaseClass enemy)
