@@ -116,7 +116,7 @@ MonoBehaviour:
   m_MinSize: {x: 709, y: 492}
   m_MaxSize: {x: 18004, y: 14042}
   vertical: 0
-  controlID: 94
+  controlID: 89
 --- !u!114 &6
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -430,9 +430,9 @@ MonoBehaviour:
   m_PlayAudio: 0
   m_AudioPlay: 0
   m_Position:
-    m_Target: {x: 9.038111, y: 1.3365002, z: -12.337133}
+    m_Target: {x: 10.178106, y: -0.33420277, z: -11.743446}
     speed: 2
-    m_Value: {x: 9.038111, y: 1.3365002, z: -12.337133}
+    m_Value: {x: 10.178106, y: -0.33420277, z: -11.743446}
   m_RenderMode: 0
   m_CameraMode:
     drawMode: 0
@@ -478,13 +478,13 @@ MonoBehaviour:
     m_GridAxis: 1
     m_gridOpacity: 0.5
   m_Rotation:
-    m_Target: {x: -0.0061034034, y: -0.99119836, z: 0.12435656, w: -0.048282903}
+    m_Target: {x: 0.002713443, y: -0.9596767, z: 0.2814865, w: 0.009442877}
     speed: 2
-    m_Value: {x: -0.0059159533, y: -0.9911175, z: 0.12434648, w: -0.046788868}
+    m_Value: {x: 0.0027130218, y: -0.95952773, z: 0.28144282, w: 0.009441412}
   m_Size:
-    m_Target: 10
+    m_Target: 11.946925
     speed: 2
-    m_Value: 10
+    m_Value: 11.946925
   m_Ortho:
     m_Target: 0
     speed: 2
@@ -657,9 +657,9 @@ MonoBehaviour:
   m_SceneHierarchy:
     m_TreeViewState:
       scrollPos: {x: 0, y: 0}
-      m_SelectedIDs: 66340000
-      m_LastClickedID: 13414
-      m_ExpandedIDs: 70fbffff14350000
+      m_SelectedIDs: 
+      m_LastClickedID: 0
+      m_ExpandedIDs: 70fbffff4634000014350000
       m_RenameOverlay:
         m_UserAcceptedRename: 0
         m_Name: 
@@ -721,8 +721,7 @@ MonoBehaviour:
     m_ShowAllHits: 0
     m_SkipHidden: 0
     m_SearchArea: 1
-    m_Folders:
-    - Assets/Resources/Scripts
+    m_Folders: []
   m_ViewMode: 0
   m_StartGridSize: 64
   m_LastFolders: []
@@ -759,24 +758,24 @@ MonoBehaviour:
       m_Icon: {fileID: 0}
       m_ResourceFile: 
   m_AssetTreeState:
-    scrollPos: {x: 0, y: 537}
+    scrollPos: {x: 0, y: 493}
     m_SelectedIDs: 
     m_LastClickedID: 0
     m_ExpandedIDs: ffffffff000000000e37000010370000123700001437000016370000
     m_RenameOverlay:
       m_UserAcceptedRename: 0
-      m_Name: 
-      m_OriginalName: 
+      m_Name: MainCameraBehavior
+      m_OriginalName: MainCameraBehavior
       m_EditFieldRect:
         serializedVersion: 2
         x: 0
         y: 0
         width: 0
         height: 0
-      m_UserData: 0
+      m_UserData: 24646
       m_IsWaitingForDelay: 0
       m_IsRenaming: 0
-      m_OriginalEventType: 11
+      m_OriginalEventType: 0
       m_IsRenamingFilename: 1
       m_ClientGUIView: {fileID: 11}
     m_SearchString: 
