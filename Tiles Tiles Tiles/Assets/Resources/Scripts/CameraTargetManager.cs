@@ -57,6 +57,11 @@ public class CameraTargetManager : MonoBehaviour
             UnlockCamera();
             this.transform.position += (Vector3.forward * speed * Time.deltaTime);
         }
+
+        //if (Input.GetKey(KeyCode.E))
+        //{
+        //    this.transform.rotation
+        //}
     }
 
     public void UnlockCamera()
@@ -64,4 +69,6 @@ public class CameraTargetManager : MonoBehaviour
         isLocked = false;
         this.transform.parent = null;        
     }
+
+
 }
