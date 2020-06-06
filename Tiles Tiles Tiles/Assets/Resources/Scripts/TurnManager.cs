@@ -46,6 +46,8 @@ public class TurnManager : MonoBehaviour
         {
             CharacterStats chara = (CharacterStats)playerTeamList[0];
             chara.isTurnActive = true;
+
+            CameraTargetManager.instance.isLocked = true;
         }
     }
 
@@ -55,6 +57,7 @@ public class TurnManager : MonoBehaviour
         if (isTurnStarted)
         {
             playerTurnList = new List<CharacterStats>(playerTeamList);
+
             isTurnStarted = false;
         }
 
@@ -63,6 +66,7 @@ public class TurnManager : MonoBehaviour
             if (Input.GetKeyDown(KeyCode.Tab))
             {
                 SwitchCharacter();
+                CameraTargetManager.instance.isLocked = true;
             }
 
             if (Input.GetKeyDown(KeyCode.Z))
@@ -89,6 +93,9 @@ public class TurnManager : MonoBehaviour
             characterStats.isTurnActive = false;
             playerTurnList.Remove(characterStats);
             isEnemyTurn = true;
+
+
+            CameraTargetManager.instance.isLocked = false;
             return;
         }
 
