@@ -512,13 +512,14 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 151347024}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: 0, y: 1, z: 0, w: 0}
   m_LocalPosition: {x: 9.980083, y: 1.0500002, z: -2.5815773}
   m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
+  m_Children:
+  - {fileID: 963194228}
   m_Father: {fileID: 0}
-  m_RootOrder: 21
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_RootOrder: 19
+  m_LocalEulerAnglesHint: {x: 0, y: 180, z: 0}
 --- !u!65 &151347026
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -539,7 +540,7 @@ MeshRenderer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 151347024}
-  m_Enabled: 0
+  m_Enabled: 1
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
@@ -591,8 +592,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b1b96071b6c1312468395dfd5342c962, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  followTransform: {fileID: 0}
+  cameraTransform: {fileID: 963194228}
   isLocked: 1
   speed: 5
+  movementTime: 3
+  rotationAmount: 1
+  zoomAmount: {x: 0, y: 1, z: -1}
+  newZoom: {x: 0, y: 8, z: -8}
+  newPosition: {x: 0, y: 0, z: 0}
+  newRotation: {x: 0, y: 0, z: 0, w: 0}
+  dragStartPosition: {x: 0, y: 0, z: 0}
+  dragCurrentPosition: {x: 0, y: 0, z: 0}
+  rotateStartPosition: {x: 0, y: 0, z: 0}
+  rotateCurrentPosition: {x: 0, y: 0, z: 0}
 --- !u!1001 &170936889
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -825,7 +838,7 @@ Transform:
   m_Children:
   - {fileID: 1992145970}
   m_Father: {fileID: 0}
-  m_RootOrder: 23
+  m_RootOrder: 22
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &232490974
 GameObject:
@@ -1146,7 +1159,7 @@ PrefabInstance:
     - target: {fileID: -4216859302048453862, guid: 718e959a15023f34d85f08183af24205,
         type: 3}
       propertyPath: m_RootOrder
-      value: 25
+      value: 24
       objectReference: {fileID: 0}
     - target: {fileID: -4216859302048453862, guid: 718e959a15023f34d85f08183af24205,
         type: 3}
@@ -1377,7 +1390,7 @@ Transform:
   m_Children:
   - {fileID: 2071093498}
   m_Father: {fileID: 0}
-  m_RootOrder: 22
+  m_RootOrder: 21
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &448031170 stripped
 Transform:
@@ -2573,12 +2586,12 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 963194225}
-  m_LocalRotation: {x: -0, y: 0.92387956, z: -0.38268343, w: 0}
-  m_LocalPosition: {x: 8.33, y: 10.66, z: 4.62}
+  m_LocalRotation: {x: 0.38268343, y: -0, z: 0.000000010821183, w: 0.9238796}
+  m_LocalPosition: {x: 0, y: 8, z: -8}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
-  m_Father: {fileID: 0}
-  m_RootOrder: 20
+  m_Father: {fileID: 151347025}
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 45, y: 180, z: 0}
 --- !u!114 &963194229
 MonoBehaviour:
@@ -2984,7 +2997,7 @@ Transform:
   - {fileID: 1570114480}
   - {fileID: 2092818992}
   m_Father: {fileID: 0}
-  m_RootOrder: 24
+  m_RootOrder: 23
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1224280840
 MonoBehaviour:
@@ -4816,7 +4829,7 @@ Transform:
   m_LocalScale: {x: 1, y: 3.1565545, z: 4.368601}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 19
+  m_RootOrder: 20
   m_LocalEulerAnglesHint: {x: 0, y: 46.284, z: 0}
 --- !u!1 &2052390581
 GameObject:
@@ -5082,7 +5095,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2092818992}
   m_Layer: 0
-  m_Name: GameObject
+  m_Name: Holsters
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

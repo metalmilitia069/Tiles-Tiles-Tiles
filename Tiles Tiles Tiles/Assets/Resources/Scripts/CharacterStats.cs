@@ -166,4 +166,9 @@ public class CharacterStats : CharacterCombat/*, IPlayerTeam*/
     //{
     //    TurnManager.instance.playerTeam.Add((IPlayerTeam)this);
     //}
+
+    private void OnMouseDown()
+    {
+        CameraTargetManager.instance.followTransform = transform;
+    }
 }
