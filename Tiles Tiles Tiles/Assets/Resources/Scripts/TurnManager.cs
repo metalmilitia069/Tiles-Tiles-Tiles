@@ -127,6 +127,7 @@ public class TurnManager : MonoBehaviour
                         index = 0;
                     }
                     p = (CharacterStats)playerTurnList[index];
+                    CameraTargetManager.instance.followTransform = p.transform;
                     p.isTurnActive = true;
                     break;
                 }

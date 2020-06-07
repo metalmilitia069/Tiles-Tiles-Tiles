@@ -56,8 +56,8 @@ public class CameraTargetManager : MonoBehaviour
         {
             transform.position = followTransform.position;
         }
-        else
-        {
+        //else
+        //{
             if (Input.GetKey(KeyCode.W))
             {
                 //isLocked = false;
@@ -124,7 +124,7 @@ public class CameraTargetManager : MonoBehaviour
 
             HandleMouseInput();
 
-        }
+        //}
 
         if (Input.GetKeyDown(KeyCode.Escape))
         {
@@ -137,7 +137,8 @@ public class CameraTargetManager : MonoBehaviour
     public void UnlockCamera()
     {
         isLocked = false;
-        this.transform.parent = null;        
+        //this.transform.parent = null;
+        followTransform = null;
     }
 
     public void HandleMouseInput()

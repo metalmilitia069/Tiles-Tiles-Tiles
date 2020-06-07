@@ -92,10 +92,12 @@ public class CharacterStats : CharacterCombat/*, IPlayerTeam*/
     {
         if (isTurnActive)
         {
-            if (CameraTargetManager.instance.isLocked)
+            if (CameraTargetManager.instance.isLocked)//
             {
-                CameraTargetManager.instance.transform.parent = this.transform;
-                CameraTargetManager.instance.transform.position = this.transform.position;
+                //CameraTargetManager.instance.transform.parent = this.transform;//
+                //CameraTargetManager.instance.transform.position = this.transform.position;//
+
+                CameraTargetManager.instance.followTransform = transform;
             }
 
             if (_isMoveMode)
