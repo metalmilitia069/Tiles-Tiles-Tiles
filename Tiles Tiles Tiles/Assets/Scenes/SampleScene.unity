@@ -425,9 +425,10 @@ MonoBehaviour:
   elementalDefElectricity: 0
   elementalDefCold: 0
   elementalDefPoison: 0
+  target: {fileID: 0}
   selectableTiles: []
   currentTile: {fileID: 0}
-  _movePoints: 5
+  _movePoints: 3
   isMoving: 0
   isTilesFound: 0
   _velocity: {x: 0, y: 0, z: 0}
@@ -442,6 +443,7 @@ MonoBehaviour:
   _isCombatMode: 0
   _isMoveMode: 1
   isTurnActive: 0
+  actionPoints: 2
 --- !u!1 &129816115
 GameObject:
   m_ObjectHideFlags: 0
@@ -800,9 +802,10 @@ MonoBehaviour:
   elementalDefElectricity: 0
   elementalDefCold: 0
   elementalDefPoison: 0
+  target: {fileID: 0}
   selectableTiles: []
   currentTile: {fileID: 0}
-  _movePoints: 5
+  _movePoints: 3
   isMoving: 0
   isTilesFound: 0
   _velocity: {x: 0, y: 0, z: 0}
@@ -817,6 +820,7 @@ MonoBehaviour:
   _isCombatMode: 0
   _isMoveMode: 1
   isTurnActive: 0
+  actionPoints: 2
 --- !u!114 &221805632
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -921,7 +925,7 @@ GameObject:
   - component: {fileID: 283225677}
   m_Layer: 0
   m_Name: Pricess Leia
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1369,9 +1373,10 @@ MonoBehaviour:
   elementalDefElectricity: 0
   elementalDefCold: 0
   elementalDefPoison: 0
+  target: {fileID: 0}
   selectableTiles: []
   currentTile: {fileID: 0}
-  _movePoints: 5
+  _movePoints: 3
   isMoving: 0
   isTilesFound: 0
   _velocity: {x: 0, y: 0, z: 0}
@@ -1386,6 +1391,7 @@ MonoBehaviour:
   _isCombatMode: 0
   _isMoveMode: 1
   isTurnActive: 0
+  actionPoints: 2
 --- !u!114 &410001307
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1740,7 +1746,7 @@ GameObject:
   - component: {fileID: 516377918}
   m_Layer: 0
   m_Name: Lando Calrisian
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -2127,6 +2133,7 @@ MonoBehaviour:
   tilePlaceholder: {fileID: 0}
   baseCharacter: {fileID: 0}
   _isCombatMode: 0
+  actualTargetTile: {fileID: 0}
 --- !u!4 &621362130
 Transform:
   m_ObjectHideFlags: 0
@@ -2911,7 +2918,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   playerTeamList: []
   playerTurnList: []
+  enemyTeamList: []
+  enemyTurnList: []
   isTurnStarted: 1
+  isEnemyTurnStarted: 0
   isPlayerTurn: 1
   isEnemyTurn: 0
   isListStarted: 0
@@ -3027,7 +3037,7 @@ GameObject:
   - component: {fileID: 1224280840}
   m_Layer: 0
   m_Name: Han Solo
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

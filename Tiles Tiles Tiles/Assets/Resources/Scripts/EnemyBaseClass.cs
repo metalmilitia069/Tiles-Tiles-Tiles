@@ -49,7 +49,12 @@ public class EnemyBaseClass : MonoBehaviour
     [SerializeField]
     public int elementalDefCold = 0;
     [SerializeField]
-    public int elementalDefPoison = 0;    
+    public int elementalDefPoison = 0;
+
+
+
+    //AI STUFF #########################################
+    public GameObject target;
 
     public void ShowProbability()
     {
@@ -123,12 +128,15 @@ public class EnemyBaseClass : MonoBehaviour
 
     //from characterStats
 
+    //Other Variables
+    [Header("TURN VARIABLES")]
     public bool isTurnActive = false;
+    public int actionPoints;
 
     // Start is called before the first frame update
     void Start()
     {
-
+        AddEnemyToTeamList();
     }
 
     // Update is called once per frame
@@ -165,20 +173,24 @@ public class EnemyBaseClass : MonoBehaviour
                 //Move();
                 //}
 
-                if (!isMoving)
+                if (isMoving)
                 {
                     //FindNearestTarget();
-                    //CalculatePath();
-                    //FindSelectableTiles();
+                    //CalculatePathAI();
+                    //GridManager.instance.CalculateAvailablePath(this.gameObject);//GridManager.instance.CalculateAvailablePathForAI(this.gameObject);//FindSelectableTiles();
+                    Move();
                 }
 
                 if (!isTilesFound)
                 {
-                    if (this.GetComponent<CharacterStats>().actionPoints <= 0)
+                    if (this.GetComponent<EnemyBaseClass>().actionPoints <= 0)
                     {
-                        //TurnManager.instance.PlayerCharacterActionDepleted((CharacterStats)this);
+                        TurnManager.instance.EnemyCharacterActionDepleted((EnemyBaseClass)this);
                         return;
                     }
+                    //GridManager.instance.CalculateAvailablePath(this.gameObject);
+                    FindNearestTarget();
+                    CalculatePathAI();
                     GridManager.instance.CalculateAvailablePath(this.gameObject);
                 }
 
@@ -395,4 +407,102 @@ public class EnemyBaseClass : MonoBehaviour
     }
 
 
+    //added to AI ###########################################################################################
+
+    private void FindNearestTarget()
+    {
+        GameObject[] targets = GameObject.FindGameObjectsWithTag("Player");
+
+        GameObject nearest = null;
+        float distance = float.MaxValue;
+
+        foreach (var obj in targets)
+        {
+            float d = Vector3.Distance(transform.position, obj.transform.position); //Look at this method as solution later >>> Vector3.SqrMagnitude
+
+            if (d < distance)
+            {
+                distance = d;
+                nearest = obj;
+            }
+        }
+
+        target = nearest;
+    }
+    private void CalculatePathAI()
+    {
+        Tile targetTile = GridManager.instance.GetTargetTile(target);
+        //FindPathAI(targetTile);
+        GridManager.instance.FindPathAI(targetTile, target, this);
+    }
+
+    //protected void FindPathAI(Tile target)//A*
+    //{
+    //    ComputeAdjacencyList(jumpHeight, target);
+    //    GetCurrentTile();
+
+    //    List<Tile> openList = new List<Tile>();
+    //    List<Tile> closeList = new List<Tile>();
+
+    //    openList.Add(currentTile);
+    //    currentTile.h = Vector3.Distance(currentTile.transform.position, target.transform.position);
+    //    currentTile.f = currentTile.h;
+
+    //    while (openList.Count > 0)
+    //    {
+    //        //A* algorithm
+
+    //        Tile t = FindLowestF(openList);
+
+    //        closeList.Add(t);
+
+    //        if (t == target)
+    //        {
+    //            actualTargetTile = FindEndTile(t);
+    //            MoveToTile(actualTargetTile);
+    //            return;
+    //        }
+
+    //        foreach (var tile in t.adjacencyList)
+    //        {
+    //            if (closeList.Contains(tile))
+    //            {
+    //                //Do nothing, already processed
+    //            }
+    //            else if (openList.Contains(tile))
+    //            {
+    //                float tempG = t.g + Vector3.Distance(tile.transform.position, t.transform.position);
+
+    //                if (tempG < tile.g)
+    //                {
+    //                    tile.parent = t;
+
+    //                    tile.g = tempG;
+    //                    tile.f = tile.g + tile.h;
+    //                }
+    //            }
+    //            else
+    //            {
+    //                tile.parent = t;
+
+    //                tile.g = t.g + Vector3.Distance(tile.transform.position, t.transform.position);//g is the distance to beginning
+    //                tile.h = Vector3.Distance(tile.transform.position, target.transform.position);//h is the estimated distance to the end
+    //                tile.f = tile.g + tile.h;
+
+    //                openList.Add(tile);
+    //            }
+    //        }
+    //    }
+
+    //    //todo: what do you if there is no path to the target tile???
+    //    Debug.Log("Path not found");
+
+    //}
+
+
+    public void AddEnemyToTeamList()
+    {
+        //TurnManager.instance.playerTeam.Add((IPlayerTeam)this);
+        TurnManager.instance.enemyTeamList.Add((EnemyBaseClass)this);
+    }
 }

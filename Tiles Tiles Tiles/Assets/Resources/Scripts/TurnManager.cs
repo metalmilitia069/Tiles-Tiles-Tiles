@@ -32,8 +32,12 @@ public class TurnManager : MonoBehaviour
     public List<CharacterStats> playerTeamList;
     public List<CharacterStats> playerTurnList;
 
+    public List<EnemyBaseClass> enemyTeamList;
+    public List<EnemyBaseClass> enemyTurnList;
+
 
     public bool isTurnStarted = true;
+    public bool isEnemyTurnStarted = false;
     public bool isPlayerTurn = true; //TODO: change to false after testing
     public bool isEnemyTurn = false;
 
@@ -49,6 +53,11 @@ public class TurnManager : MonoBehaviour
 
             CameraTargetManager.instance.isLocked = true;
         }
+
+        //if (enemyTeamList.Count > 0)
+        //{
+        //    EnemyBaseClass ene = (EnemyBaseClass)
+        //}
     }
 
     // Update is called once per frame
@@ -57,6 +66,7 @@ public class TurnManager : MonoBehaviour
         if (isTurnStarted)
         {
             playerTurnList = new List<CharacterStats>(playerTeamList);
+            enemyTurnList = new List<EnemyBaseClass>(enemyTeamList);
 
             isTurnStarted = false;
         }
@@ -80,6 +90,16 @@ public class TurnManager : MonoBehaviour
                 }
                 playerTurnList.Clear();
                 isEnemyTurn = true;
+                isEnemyTurnStarted = true;
+            }
+        }
+
+        if (isEnemyTurn)
+        {
+            if (isEnemyTurnStarted)
+            {
+                enemyTurnList[0].isTurnActive = true;
+                isEnemyTurnStarted = false;
             }
         }
     }
@@ -101,6 +121,23 @@ public class TurnManager : MonoBehaviour
 
         SwitchCharacter();
         playerTurnList.Remove(characterStats);
+    }
+
+    public void EnemyCharacterActionDepleted(EnemyBaseClass enemyBase)
+    {
+        if (enemyTurnList.Count == 1)
+        {
+            isEnemyTurn = false;
+            Debug.Log("Enemy's Turn is Over!!!");
+            enemyBase.isTurnActive = false;
+            enemyTurnList.Remove(enemyBase);
+            isPlayerTurn = true;
+
+            return;
+        }
+
+        SwitchEnemy();
+        enemyTurnList.Remove(enemyBase);
     }
 
     public void SwitchCharacter()
@@ -134,6 +171,39 @@ public class TurnManager : MonoBehaviour
                 //}
             }
         }        
+    }
+
+    public void SwitchEnemy()
+    {
+        if (enemyTurnList.Count > 0)
+        {
+
+            foreach (var enemy in enemyTurnList)
+            {
+                //if (player is CharacterStats)
+                //{
+
+
+                EnemyBaseClass e = (EnemyBaseClass)enemy;
+                if (e.isTurnActive)
+                {
+                    int index = enemyTurnList.IndexOf(e);
+                    e.isTurnActive = false;
+                    e._isMoveMode = true;
+                    e.isTilesFound = false;
+                    index++;
+                    if (index >= enemyTurnList.Count)
+                    {
+                        index = 0;
+                    }
+                    e = (EnemyBaseClass)enemyTurnList[index];
+                    //CameraTargetManager.instance.followTransform = e.transform;
+                    e.isTurnActive = true;
+                    break;
+                }
+                //}
+            }
+        }
     }
 
     public void EndTurn()

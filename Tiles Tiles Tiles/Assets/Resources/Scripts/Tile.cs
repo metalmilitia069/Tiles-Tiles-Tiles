@@ -27,6 +27,11 @@ public class Tile : MonoBehaviour
     protected bool isAttackMode = false;
     public bool isMoveMode = true;
 
+    //Needed for A* AI STUFF
+    public float f = 0;
+    public float g = 0;
+    public float h = 0;
+
     // Start is called before the first frame update
     void Start()
     {        
@@ -63,7 +68,10 @@ public class Tile : MonoBehaviour
 
         isAttacable = false;
 
-        
+
+        //AI STUFF
+
+        f = g = h = 0;
     }
 
     public void ScanTiles()
@@ -180,4 +188,63 @@ public class Tile : MonoBehaviour
             tile.isCover = true;
         }
     }
+
+    //AI Methods
+
+    public void ScanTilesForAI(float jumpHeight, Tile target)
+    {
+        ResetTileData();
+
+        //Debug.Log("cucucucufhdgd");
+
+        GatherNearbyTilesForAI(Vector3.forward, jumpHeight, target);
+        GatherNearbyTilesForAI(Vector3.back, jumpHeight, target);
+        GatherNearbyTilesForAI(Vector3.left, jumpHeight, target);
+        GatherNearbyTilesForAI(Vector3.right, jumpHeight, target);
+
+        if (isLatter)
+        {
+            DetectLatterTop();
+        }
+
+        //if (isCover)
+        //{
+        //    SetCovertTiles();
+        //}
+
+    }
+
+    public void GatherNearbyTilesForAI(Vector3 direction, float jumHeight, Tile target)
+    {
+        Vector3 halfExtends = new Vector3(0.25f, jumpHeight, 0.25f);
+        Collider[] colliders = Physics.OverlapBox(transform.position + direction, halfExtends);
+
+        foreach (var col in colliders)
+        {
+            referenceTile = col.GetComponent<Tile>();
+
+            if (referenceTile != null && referenceTile.isWalkable)
+            {
+                RaycastHit hit;
+
+                if (!Physics.Raycast(referenceTile.transform.position, Vector3.up, out hit, 1) || (referenceTile == target))
+                {
+                    listOfNearbyValidTiles.Add(referenceTile);
+                }
+                else
+                {
+                    //if(GridManager.instance.baseCharacter._isCombatMode)
+                    if (!this.isMoveMode)
+                    {
+                        if (hit.transform.GetComponent<EnemyBaseClass>())
+                        {
+                            listOfNearbyValidTiles.Add(referenceTile);
+                        }
+                    }
+                }
+
+            }
+        }
+    }
+
 }
