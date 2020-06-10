@@ -60,7 +60,7 @@ public class TileType : Tile
             //    GetComponent<Renderer>().material.color = Color.cyan;
             //}
         }
-        else if (isAttacable)
+        else if (isAttakable)
         {
             GetComponent<Renderer>().material.color = Color.cyan;
         }

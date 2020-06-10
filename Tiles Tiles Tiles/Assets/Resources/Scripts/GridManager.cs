@@ -177,7 +177,7 @@ public class GridManager : MonoBehaviour
             Tile t = queueProcess.Dequeue();
 
             listOfSelectableTiles.Add(t);
-            t.isAttacable = true;
+            t.isAttakable = true;
 
             if (t.distance < baseCharacter._weaponRange)
             {

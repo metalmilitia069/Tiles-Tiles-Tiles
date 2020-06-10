@@ -23,7 +23,7 @@ public class Tile : MonoBehaviour
     public Tile parent = default;
 
     //COmbat Stuff
-    public bool isAttacable = false;
+    public bool isAttakable = false;
     protected bool isAttackMode = false;
     public bool isMoveMode = true;
 
@@ -61,7 +61,7 @@ public class Tile : MonoBehaviour
 
         //COMBAT STUFF
 
-        isAttacable = false;
+        isAttakable = false;
 
         
     }
