@@ -15,8 +15,8 @@ public class CharacterCombat : CharacterMove
 
     public GameObject weaponGripPlace;
 
-    public delegate void OnAttack(WeaponBaseClass weaponBaseClass);
-    public static event OnAttack EventAttackTarget;
+    //public delegate void OnAttack(WeaponBaseClass weaponBaseClass);
+    //public static event OnAttack EventAttackTarget;
 
     //TEST 
     public GameObject[] weaponPrefabBelt;

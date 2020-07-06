@@ -4,21 +4,21 @@ using UnityEngine;
 
 public class TileType : Tile
 {
-    [SerializeField]
-    private float _latterHeight = 5;
-    [SerializeField]
-    private Vector3 _latterHeightVector;
+    //[SerializeField]
+    //private float _latterHeight = 5;
+    //[SerializeField]
+    //private Vector3 _latterHeightVector;
 
-    [SerializeField]
-    private bool _isForwardDirection = false;
-    [SerializeField]
-    private bool _isBackwardDirection = false;
-    [SerializeField]
-    private bool _isRightDirection = false;
-    [SerializeField]
-    private bool _isLeftDirection = false;
-    [SerializeField]
-    private Vector3 _direction;
+    //[SerializeField]
+    //private bool _isForwardDirection = false;
+    //[SerializeField]
+    //private bool _isBackwardDirection = false;
+    //[SerializeField]
+    //private bool _isRightDirection = false;
+    //[SerializeField]
+    //private bool _isLeftDirection = false;
+    //[SerializeField]
+    //private Vector3 _direction;
     //protected bool isLatter = false;
     //protected bool isCover = false;
     // Start is called before the first frame update
